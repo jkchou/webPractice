@@ -314,7 +314,8 @@
             .then(respond => {
                 if (respond.status === 200) {
                     alert("提交成功")
-                    location.reload();
+                    // location.reload();
+                    window.location.href = "scheduling.html";
                 }
             });
     }
