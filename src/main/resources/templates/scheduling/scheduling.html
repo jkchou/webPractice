@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>计划-排产</title>
+    <link href="../../static/css/bootstrap.css" rel="stylesheet">
+    <link href="../../static/css/index.css" rel="stylesheet">
+    <script src="../../static/js/jquery-1.11.3.js"></script>
+    <script src="../../static/js/bootstrap.js"></script>
+    <script src="../../static/js/index.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+</head>
+<body>
+<!--导航start-->
+<nav class="navbar navbar-fixed-top">
+    <div class="container-fluid ">
+        <div class="row">
+            <div class="col-md-2 nav-logo">
+                <a href="首页.html"><img src="../../static/images/logo.png"/></a>
+            </div>
+            <div class="col-md-10 navbar1">
+                <p class="navbar-text">信息沟通世界&nbsp;&nbsp;科技服务三农</p>
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="销售-订单管理.html"><span class="glyphicon glyphicon-volume-up"></span>&nbsp;<span>订单<span
+                                class="badge">1</span></span></a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                            <span class="glyphicon glyphicon-info-sign"></span>&nbsp;
+                            <span>帮助</span>
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-right">
+                            <li class="text-center"><a href="#"><span class="text-primary"><span
+                                    class="glyphicon glyphicon-phone-alt"></span>&nbsp;&nbsp;0451-87963519-815</span></a>
+                            </li>
+                            <li class="text-center"><a href="#"><span class="text-primary"><span
+                                    class="glyphicon glyphicon-comment"></span>&nbsp;&nbsp;互助问答</span></a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                            <span class="glyphicon glyphicon-user"></span>&nbsp;
+                            <span>农业集团科技有限公司</span>
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-right">
+                            <li class="text-center"><a href="资源-公司信息.html"><span class="text-primary"><span
+                                    class="glyphicon glyphicon-cog"></span>&nbsp;&nbsp;企业设置</span></a></li>
+                            <li class="text-center"><a href="首页.html"><span class="text-primary"><span
+                                    class="glyphicon glyphicon-home"></span>&nbsp;&nbsp;个人首页</span></a></li>
+                            <li class="text-center"><a href="资源-站内信息.html"><span class="text-primary"><span
+                                    class="glyphicon glyphicon-envelope"></span>&nbsp;&nbsp;系统消息</span></a></li>
+                            <li class="text-center"><a href="修改密码.html"><span class="text-primary"><span
+                                    class="glyphicon glyphicon-lock"></span>&nbsp;&nbsp;修改密码</span></a></li>
+
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="登录.html">
+                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span>退出</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>
+<!--导航end-->
+<!--主体开始-->
+<main>
+    <div class="container-fluid" id="app">
+        <div class="row">
+            <div class="col-xs-2 navbar2 sidebar">
+                <h3>翔 农 云 农 场</h3>
+                <h4>www.nongchang.com</h4>
+                <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                    <div class="panel panel-default">
+                        <a class="nav-panel nav-left1" data-toggle="collapse" data-parent="#accordion"
+                           href="#collapseOne" aria-expanded="true"
+                           aria-controls="collapseOne">
+                            <i class="ziyuan"></i>
+                            <i class="panel-left1">资&nbsp;源</i>
+                        </a>
+                        <div id="collapseOne" class="panel-collapse collapse">
+                            <ul class="nav  nav-list">
+                                <li><a href="资源-公司信息.html">公司信息</a></li>
+                                <li><a href="资源-认证信息.html">认证信息</a></li>
+                                <li><a href="资源-员工管理-基地负责人.html">员工信息</a></li>
+                                <li><a href="资源-园区管理.html">园区管理</a></li>
+                                <li><a href="资源-农机管理.html">农机管理</a></li>
+                                <li><a href="资源-设备管理.html">设备管理</a></li>
+                                <li><a href="资源-站内信息.html">站内信息</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <a class="nav-panel nav-left1" data-toggle="collapse" data-parent="#accordion"
+                           href="#collapseOne1" aria-expanded="true"
+                           aria-controls="collapseOne1">
+                            <i class="jihua"></i>
+                            <i class="panel-left1">计&nbsp;划</i>
+                        </a>
+                        <div id="collapseOne1" class="panel-collapse collapse">
+                            <ul class="nav  nav-list">
+                                <li><a href="计划-种类.html">种 类</a></li>
+                                <li><a href="scheduling.html">排 产</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <a class="nav-panel nav-left1" data-toggle="collapse" data-parent="#accordion"
+                           href="#collapseOne2" aria-expanded="true"
+                           aria-controls="collapseOne2">
+                            <i class="shengchan"></i>
+                            <i class="panel-left1">生&nbsp;产</i>
+                        </a>
+                        <div id="collapseOne2" class="panel-collapse collapse">
+                            <ul class="nav  nav-list">
+                                <li><a href="生产-农事.html">农事管理</a></li>
+                                <li><a href="生产-预警管理.html">预警管理</a></li>
+                                <li><a href="生产-监测.html">监 测</a></li>
+                                <li><a href="生产-控制.html">控 制</a></li>
+                                <li><a href="生产-气象.html">气 象</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <a class="nav-panel nav-left1" data-toggle="collapse" data-parent="#accordion"
+                           href="#collapseOne4" aria-expanded="true"
+                           aria-controls="collapseOne4">
+                            <i class="xiaoshou"></i>
+                            <i class="panel-left1">销&nbsp;售</i>
+                        </a>
+                        <div id="collapseOne4" class="panel-collapse collapse">
+                            <ul class="nav  nav-list">
+                                <li><a href="销售-订单管理.html">订单管理</a></li>
+                                <li><a href="销售-价格.html">价格管理</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <a class="nav-panel nav-left1" data-toggle="collapse" data-parent="#accordion"
+                           href="#collapseOne5" aria-expanded="true"
+                           aria-controls="collapseOne5">
+                            <i class="lvli"></i>
+                            <i class="panel-left1">商&nbsp;品</i>
+                        </a>
+                        <div id="collapseOne5" class="panel-collapse collapse">
+                            <ul class="nav  nav-list">
+                                <li><a href="商品-加工.html">加 工</a></li>
+                                <li><a href="商品-损耗.html">损 耗</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <a class="nav-panel nav-left1" data-toggle="collapse" data-parent="#accordion"
+                           href="#collapseOne6" aria-expanded="true"
+                           aria-controls="collapseOne6">
+                            <i class="jiagong"></i>
+                            <i class="panel-left1">配&nbsp;送</i>
+                        </a>
+                        <div id="collapseOne6" class="panel-collapse collapse">
+                            <ul class="nav  nav-list">
+                                <li><a href="配送-物流管理.html">物流管理</a></li>
+                                <li><a href="履历-履历管理.html">履历管理</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <a class="nav-panel nav-left1" data-toggle="collapse" data-parent="#accordion"
+                           href="#collapseOne7" aria-expanded="true"
+                           aria-controls="collapseOne7">
+                            <i class="fenxi"></i>
+                            <i class="panel-left1">统&nbsp;计</i>
+                        </a>
+                        <div id="collapseOne7" class="panel-collapse collapse">
+                            <ul class="nav nav-list">
+                                <li><a href="汇总-历年产量对比-投产量.html">汇 总</a></li>
+                                <li><a href="分析-农事管理分析-环境监控历史纪录.html">分 析</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--左侧nav end-->
+            <!--右侧内容开始-->
+            <div class="col-xs-10 center_box">
+                <div class="row nongji-btn">
+                    <div class="col-xs-12">
+                        <span>计划&nbsp;&gt;&nbsp;&nbsp;排产</span>
+                    </div>
+                </div>
+                <!----输入框---->
+                <div class="nongji-btn">
+                    <form class="bs-example bs-example-form form-group has-feedback" role="form">
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <select class="form-control" id="category" onchange="selectPage()">
+                                    <option>全部</option>
+                                    <option>大豆类</option>
+                                    <option>薯类</option>
+                                    <option>蔬菜类</option>
+                                    <option>水果类</option>
+                                </select>
+                            </div>
+                            <div class="col-xs-3">
+                                <div class="input-group">
+                                    <input type="date" class="form-control" id="exampleInputEmail1" value="2016-01-01"/>
+                                    <i class="glyphicon glyphicon-th form-control-feedback dateicon"></i>
+                                </div>
+                            </div>
+                            <div class="col-xs-3">
+                                <div class="input-group">
+                                    <input type="date" class="form-control" id="exampleInputEmail2" value="2016-12-31"/>
+                                    <i class="glyphicon glyphicon-th form-control-feedback dateicon"></i>
+                                </div>
+                            </div>
+                            <div class="col-xs-2 col-xs-offset-1">
+                                <a href="add.html" type="button" class="btn btn-success">&nbsp;添&nbsp;加&nbsp;</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <!-----------表格---------->
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;茬</td>
+                            <td>排产种类</td>
+                            <td>所在地块</td>
+                            <td>所在区域</td>
+                            <td>排产面积</td>
+                            <td>预估产量</td>
+                            <td>实际产量</td>
+                            <td>操作</td>
+                        </tr>
+                        </thead>
+                        <tbody id="table"></tbody>
+                    </table>
+                </div>
+                <ul class="pagination option-list">
+                    <li><a href="#" id="1" onclick="showValue(this)">1</a></li>
+                    <li><a href="#" id="2" onclick="showValue(this)">2</a></li>
+                    <!--<li><a href="#" id="3" onclick="showValue(this)">3</a></li>
+                    <li><a href="#" id="4" onclick="showValue(this)">4</a></li>-->
+                    <li>
+                        <a href="#" aria-label="Next" onclick="showValue(this)" id="next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                    <li><a href="#" id="last" onclick="showValue(this)">尾页</a></li>
+                    <li><a href="#" id="currentPage">第1页</a></li>
+                    <li><a href="#" id="totalPages">共4页</a></li>
+                </ul>
+            </div>
+        </div>
+        <!-----------表格结束---------->
+
+    </div>
+</main>
+
+<script>
+
+
+    var currentPage = 1;
+    var size = 5;
+    var pages = 0;
+    var total = 0;
+
+    var scheduling = {
+        delFlag: null,
+        farmProductionsCategoryId: null,
+        farmProductionsVarietyId: null,
+        foreCast: null,
+        greenHouseId: null,
+        id: null,
+        name: null,
+        officeId: null,
+        plantArea: null,
+        plotId: null,
+        realCast: null,
+        remarks: null,
+        createBy: null,
+        createDate: null,
+        updateBy: null,
+        updateDate: null,
+    };
+    var schedulings = [];
+
+
+    window.onload = function () {
+        selectPage();
+        /*setTimeout(function () {
+            changeTable();
+        }, 30);  //5秒后将会调用执行remind()函数*/
+    }
+
+    function showValue(obj) {
+        var id = $(obj).attr("id")
+        var page = parseInt(id);
+        if (isNaN(page)) {
+            switch (id) {
+                case "next":
+                    currentPage++;
+                    if (currentPage > pages)
+                        currentPage = pages;
+                    break;
+                case "last":
+                    currentPage = pages;
+                    break;
+            }
+        } else currentPage = page;
+        console.log("currentPage " + currentPage);
+        selectPage();
+    }
+
+    function selectPage() {
+        var id = 0;
+        var categoryId = document.getElementById("category").value;
+        /*switch (categoryId) {
+            case "全部":
+                categoryId = 0;
+                break;
+            case "大豆类":
+                id = 1;
+                break;
+            case "薯类":
+                id = 2;
+                break;
+            case "蔬菜类":
+                id = 3;
+                break;
+            case "水果类":
+                id = 4;
+                break;
+        }*/
+
+        var formData = new FormData;
+        formData.append("categoryId", categoryId);
+        formData.append("current", currentPage);
+        formData.append("size", size);
+        axios.post('/api/scheduling/selectPage', formData, {
+            headers: {"Content-Type": "multipart/form-data"}
+        }).then(respond => {
+            if (respond.data.records.length !== 0)
+                schedulings = respond.data.records;
+            else schedulings = null;
+            pages = respond.data.pages;
+            total = respond.data.total;
+        });
+
+        setTimeout(function () {
+            $("#currentPage").text("第" + currentPage + "页")
+            $("#totalPages").text("共" + pages + "页")
+            changeTable();
+        }, 150);
+    }
+
+    function changeTable() {
+        if (schedulings === null) {
+            var str = "<tr></tr>";
+            $("#table").html(str);
+        } else {
+            var str = "";
+            for (let i in schedulings) {
+                str += "<tr><td>" + schedulings[i].name +
+                    "</td><td>" + schedulings[i].farmProductionsCategoryId +
+                    "</td><td>地块" + schedulings[i].plotId +
+                    "</td><td>" + schedulings[i].greenHouseId +
+                    "号大棚</td><td>" + schedulings[i].plantArea +
+                    "</td><td>" + schedulings[i].foreCast +
+                    "</td><td>" + schedulings[i].realCast + "</td><td>" +
+                    "<a href=\"detail.html?id=" + schedulings[i].id + "\"><span class=\"glyphicon glyphicon-search\" aria-hidden=\"true\"></span></a>" +
+                    "<a href=\"update.html?id=" + schedulings[i].id + "\" ><span class=\"glyphicon glyphicon-pencil\" aria-hidden=\"true\"></span></a>" +
+                    "<a href=\"#\"><span class=\"glyphicon glyphicon-trash delete-table \" aria-hidden=\"true\"></span></a>" +
+                    "</td>" +
+                    "</tr>";
+                $("#table").html(str);
+            }
+        }
+    }
+</script>
+</body>
+</html>

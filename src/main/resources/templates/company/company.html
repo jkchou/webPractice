@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns="http://www.w3.org/1999/html" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>资源-公司信息</title>
+    <link href="/css/bootstrap.css" rel="stylesheet">
+    <link href="/css/index.css" rel="stylesheet">
+    <script src="/js/jquery-1.11.3.js"></script>
+    <script src="/js/bootstrap.js"></script>
+    <script src="/js/index.js"></script>
+    <script src="/js/shangchuantouxiang.js"></script>
+    <!--[if lt IE 9]>
+    <script src="/js/html5shiv.min.js"></script>
+    <script src="/js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<!--导航start-->
+<nav class="navbar navbar-fixed-top">
+    <div class="container-fluid ">
+        <div class="row">
+            <div class="col-md-2 nav-logo">
+                <a href="首页.html"><img src="images/logo.png"/></a>
+            </div>
+            <div class="col-md-10 navbar1">
+                <p class="navbar-text">信息沟通世界&nbsp;&nbsp;科技服务三农</p>
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="销售-订单管理.html"><span class="glyphicon glyphicon-volume-up"></span>&nbsp;<span>订单<span
+                                class="badge">1</span></span></a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                            <span class="glyphicon glyphicon-info-sign"></span>&nbsp;
+                            <span>帮助</span>
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-right">
+                            <li class="text-center"><a href="#"><span class="text-primary"><span
+                                    class="glyphicon glyphicon-phone-alt"></span>&nbsp;&nbsp;0451-87963519-815</span></a>
+                            </li>
+                            <li class="text-center"><a href="#"><span class="text-primary"><span
+                                    class="glyphicon glyphicon-comment"></span>&nbsp;&nbsp;互助问答</span></a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                            <span class="glyphicon glyphicon-user"></span>&nbsp;
+                            <span>农业集团科技有限公司</span>
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-right">
+                            <li class="text-center"><a href="资源-公司信息.html"><span class="text-primary"><span
+                                    class="glyphicon glyphicon-cog"></span>&nbsp;&nbsp;企业设置</span></a></li>
+                            <li class="text-center"><a href="首页.html"><span class="text-primary"><span
+                                    class="glyphicon glyphicon-home"></span>&nbsp;&nbsp;个人首页</span></a></li>
+                            <li class="text-center"><a href="资源-站内信息.html"><span class="text-primary"><span
+                                    class="glyphicon glyphicon-envelope"></span>&nbsp;&nbsp;系统消息</span></a></li>
+                            <li class="text-center"><a href="修改密码.html"><span class="text-primary"><span
+                                    class="glyphicon glyphicon-lock"></span>&nbsp;&nbsp;修改密码</span></a></li>
+
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="登录.html">
+                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span>退出</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>
+<!--导航end-->
+<!--主体开始-->
+<main>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-2 navbar2 sidebar">
+                <h3>翔 农 云 农 场</h3>
+                <h4>www.nongchang.com</h4>
+                <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                    <div class="panel panel-default">
+                        <a class="nav-panel nav-left1" data-toggle="collapse" data-parent="#accordion"
+                           href="#collapseOne" aria-expanded="true"
+                           aria-controls="collapseOne">
+                            <i class="ziyuan"></i>
+                            <i class="panel-left1">资&nbsp;源</i>
+                        </a>
+                        <div id="collapseOne" class="panel-collapse collapse">
+                            <ul class="nav  nav-list">
+                                <li><a href="资源-公司信息.html">公司信息</a></li>
+                                <li><a href="资源-认证信息.html">认证信息</a></li>
+                                <li><a href="资源-员工管理-基地负责人.html">员工信息</a></li>
+                                <li><a href="资源-园区管理.html">园区管理</a></li>
+                                <li><a href="资源-农机管理.html">农机管理</a></li>
+                                <li><a href="资源-设备管理.html">设备管理</a></li>
+                                <li><a href="资源-站内信息.html">站内信息</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <a class="nav-panel nav-left1" data-toggle="collapse" data-parent="#accordion"
+                           href="#collapseOne1" aria-expanded="true"
+                           aria-controls="collapseOne1">
+                            <i class="jihua"></i>
+                            <i class="panel-left1">计&nbsp;划</i>
+                        </a>
+                        <div id="collapseOne1" class="panel-collapse collapse">
+                            <ul class="nav  nav-list">
+                                <li><a href="计划-种类.html">种 类</a></li>
+                                <li><a href="计划-排产.html">排 产</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <a class="nav-panel nav-left1" data-toggle="collapse" data-parent="#accordion"
+                           href="#collapseOne2" aria-expanded="true"
+                           aria-controls="collapseOne2">
+                            <i class="shengchan"></i>
+                            <i class="panel-left1">生&nbsp;产</i>
+                        </a>
+                        <div id="collapseOne2" class="panel-collapse collapse">
+                            <ul class="nav  nav-list">
+                                <li><a href="生产-农事.html">农事管理</a></li>
+                                <li><a href="生产-预警管理.html">预警管理</a></li>
+                                <li><a href="生产-监测.html">监 测</a></li>
+                                <li><a href="生产-控制.html">控 制</a></li>
+                                <li><a href="生产-气象.html">气 象</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <a class="nav-panel nav-left1" data-toggle="collapse" data-parent="#accordion"
+                           href="#collapseOne4" aria-expanded="true"
+                           aria-controls="collapseOne4">
+                            <i class="xiaoshou"></i>
+                            <i class="panel-left1">销&nbsp;售</i>
+                        </a>
+                        <div id="collapseOne4" class="panel-collapse collapse">
+                            <ul class="nav  nav-list">
+                                <li><a href="销售-订单管理.html">订单管理</a></li>
+                                <li><a href="销售-价格.html">价格管理</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <a class="nav-panel nav-left1" data-toggle="collapse" data-parent="#accordion"
+                           href="#collapseOne5" aria-expanded="true"
+                           aria-controls="collapseOne5">
+                            <i class="lvli"></i>
+                            <i class="panel-left1">商&nbsp;品</i>
+                        </a>
+                        <div id="collapseOne5" class="panel-collapse collapse">
+                            <ul class="nav  nav-list">
+                                <li><a href="商品-加工.html">加 工</a></li>
+                                <li><a href="商品-损耗.html">损 耗</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <a class="nav-panel nav-left1" data-toggle="collapse" data-parent="#accordion"
+                           href="#collapseOne6" aria-expanded="true"
+                           aria-controls="collapseOne6">
+                            <i class="jiagong"></i>
+                            <i class="panel-left1">配&nbsp;送</i>
+                        </a>
+                        <div id="collapseOne6" class="panel-collapse collapse">
+                            <ul class="nav  nav-list">
+                                <li><a href="配送-物流管理.html">物流管理</a></li>
+                                <li><a href="履历-履历管理.html">履历管理</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <a class="nav-panel nav-left1" data-toggle="collapse" data-parent="#accordion"
+                           href="#collapseOne7" aria-expanded="true"
+                           aria-controls="collapseOne7">
+                            <i class="fenxi"></i>
+                            <i class="panel-left1">统&nbsp;计</i>
+                        </a>
+                        <div id="collapseOne7" class="panel-collapse collapse">
+                            <ul class="nav nav-list">
+                                <li><a href="汇总-历年产量对比-投产量.html">汇 总</a></li>
+                                <li><a href="分析-农事管理分析-环境监控历史纪录.html">分 析</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--左侧nav end-->
+            <!--右侧内容开始-->
+            <div class="col-xs-10 center_box">
+                <div valign="top">
+                    <div class="right_c">
+                        <div class="r_title">
+                            <div class="r_t_l">资源&nbsp;&gt;&nbsp;&nbsp;信息&nbsp;&gt;&nbsp;&nbsp;公司信息</div>
+                        </div>
+                        <div class="ybp_02">
+                            <!--东区开始-->
+                            <table width="100%" cellpadding="0" cellspacing="0" class="map_tab">
+                                <tbody>
+                                <tr>
+                                    <td valign="top" align="left">
+                                        <!--农场信息开始-->
+                                        <table width="100%" cellpadding="0" cellspacing="0">
+                                            <tbody>
+                                            <tr>
+                                                <td valign="top" width="175" align="left">
+                                                    <img class="maplogo_bg" src="images/logo.png" width="158"
+                                                         height="146">
+
+                                                </td>
+                                                <td valign="top">
+                                                    <div class="farmtop">
+                                                        <span class="farmtitle">哈尔滨翔冠科技开发有限公司</span>
+                                                        <span class="bjbut"><a href="#"
+                                                                               class="btn btn-group-lg btn-default"
+                                                                               type="button" role="button"
+                                                                               aria-hidden="true" data-toggle="modal"
+                                                                               data-target="#bianji">编辑</a></span>
+                                                    </div>
+                                                    <div class="farmintro">
+                                                        哈尔滨翔冠科技开发有限公司地处哈尔滨市，位于哈尔滨市香坊区哈平路凯旋广场A栋19层。公司创建于2006年，总占地面积约7000余亩。旗下有五家分公司，分别经营农业、市政、绿化、宾馆等项目。是集高效设施种植、观光采摘、科技示范、科普教育、生产、生活、生态、休闲渔业于...
+                                                    </div>
+                                                </td>
+                                            </tr>
+
+                                            </tbody>
+                                        </table>
+
+                                        <div class="farminfor">
+                                    <span class="f_i_span">
+                                        <table cellpadding="0" cellspacing="0" height="40">
+                                             <tbody><tr>
+                                                <td width="26" height="18"><img src="images/farmico_11.png" width="22"
+                                                                                height="18"></td>
+                                                <td class="farm_i_font">新浪微博：</td>
+                                                 <td class="farm_mation">74777776@qq.com</td>
+                                            </tr>
+                                        </tbody></table>
+                                    </span>
+                                            <span class="f_i_span">
+                                        <table cellpadding="0" cellspacing="0" height="40">
+                                             <tbody><tr>
+                                                <td width="26" height="18"><img src="images/farmico_14.png" width="22"
+                                                                                height="18"></td>
+                                                <td class="farm_i_font">腾讯微博：</td>
+                                                <td class="farm_mation">107777771</td>
+                                            </tr>
+                                        </tbody></table>
+                                    </span>
+                                            <span class="f_i_span">
+                                        <table cellpadding="0" cellspacing="0" height="40">
+                                           <tbody><tr>
+                                                <td width="26" height="18"><img src="images/farmico_17.png" width="22"
+                                                                                height="18"></td>
+                                                <td class="farm_mation2">网址：</td>
+                                                <td class="farm_mation2">http://www.nongchang.com</td>
+                                            </tr>
+                                        </tbody></table>
+                                    </span>
+                                            <span class="f_i_span">
+                                        <table cellpadding="0" cellspacing="0" height="40">
+                                            <tbody><tr>
+                                                <td width="26" height="18"><img src="images/farmico_18.png" width="22"
+                                                                                height="18"></td>
+                                                <td class="farm_mation2">联系人：</td>
+                                                <td class="farm_mation2">王主任</td>
+                                            </tr>
+                                        </tbody></table>
+                                    </span>
+                                            <span class="f_i_span">
+                                        <table cellpadding="0" cellspacing="0" height="40">
+                                            <tbody><tr>
+                                                <td width="26" height="18"><img src="images/farmico_21.png" width="22"
+                                                                                height="18"></td>
+                                                <td class="farm_mation2">联系电话：</td>
+                                                <td class="farm_mation2">0451-87963519-815</td>
+                                            </tr>
+                                        </tbody></table>
+                                    </span>
+
+                                            <span class="f_i_span">
+                                        <table cellpadding="0" cellspacing="0" height="40">
+                                            <tbody><tr>
+                                                <td width="26" height="18"><img src="images/farmico_22.png" width="22"
+                                                                                height="18"></td>
+                                                <td class="farm_mation2">邮箱：</td>
+                                                <td class="farm_mation2">11@sina.com</td>
+                                            </tr>
+                                        </tbody></table>
+                                    </span>
+                                        </div>
+                                        <!--农场信息结束-->
+                                        <!--企业图片开始-->
+                                        <div class="inporfarmer">
+                                            <div class="qyry">
+                                                <span class="qyrytitle">企业图片</span>
+                                            </div>
+                                            <div class="rongyimg">
+                                                <span class="rongyspan03"><img src="images/14606400122045a08c.JPG"
+                                                                               width="320" height="145"></span>
+                                            </div>
+                                            <div class="clear"></div>
+                                        </div>
+                                        <!--企业图片结束-->
+                                        <!--企业资质开始-->
+                                        <!--企业资质结束-->
+                                        <!--企业荣誉开始-->
+                                        <div id="j_id217" class="inporfarmer" style="border-bottom:none;">
+                                            <div class="qyry">
+                                                <span class="qyrytitle">企业荣誉</span><span class="jcbut" style=""><a
+                                                    href="#" class="btn btn-group-lg btn-default" type="button"
+                                                    role="button" aria-hidden="true" data-toggle="modal"
+                                                    data-target="#chakanrongyu">查看企业荣誉</a></span></div>
+                                            <div class="rongyimg">
+                                                <span class="renzspan" style="vertical-align: top;"><img
+                                                        src="images/14606400119733911b.JPG" width="208"></span>
+                                                <div class="clear"></div>
+                                            </div>
+                                            <div class="clear"></div>
+                                        </div>
+                                        <!--企业荣誉结束-->
+                                    </td>
+
+                                </tr>
+                                </tbody>
+                            </table>
+                            <!--东区结束-->
+                        </div>
+                        <!--入库订单列表结束-->
+                        <div class="clear"></div>
+                    </div><!--right_c结束-->
+                    <div class="clear"></div>
+                </div>
+                <!-----------农机名称---------->
+
+                <!-----------农机名称结束---------->
+                <!--编辑-->
+                <div class="modal fade bs-example-modal-lg" id="bianji" tabindex="-1" role="dialog"
+                     aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal"
+                                        aria-hidden="true">×
+                                </button>
+                                <h4 class="modal-title" id="modal-title">
+                                    编 辑 公 司 信 息
+                                </h4>
+                            </div>
+                            <div class="modal-body">
+                                <form class="form-horizontal" role="form">
+                                    <div class="form-group">
+                                        <div id="nongji_div" class="col-xs-1 col-xs-offset-1">
+                                            <img id="nongji_img" class="img-detail" src="images/logo.png"/>
+                                        </div>
+                                        <div class="col-xs-offset-2 col-xs-4">
+                                            <input type="file" onchange="previewImage(this,'nongji_img','nongji_div')"
+                                                   class="shangchuan"/>
+                                            <p class="p_img" style="margin-top:-5px;">支持格式：jpg,gif,png,jpeg,bmp,3gp</p>
+                                            <!--<input type="reset" class="btn reset" value="重新上传" id="sale-reset" style="margin-top:-5px;"/>-->
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <p class="control-label col-xs-3">公司名称：</p>
+                                        <div class="col-xs-8">
+                                            <input type="text" class='form-control' value="哈尔滨翔冠科技开发有限公司">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <p class="control-label col-xs-3">公司简介：</p>
+                                        <div class="col-xs-8">
+                                            <textarea class="form-control" rows="5">哈尔滨翔冠科技开发有限公司地处哈尔滨市，位于哈尔滨市香坊区哈平路凯旋广场A栋19层。公司创建于2006年，总占地面积约7000余亩。旗下有五家分公司，分别经营农业、市政、绿化、宾馆等项目。是集高效设施种植、观光采摘、科技示范、科普教育、生产、生活、生态、休闲渔业于...</textarea>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <p class="control-label  col-xs-2 ">新浪微博</p>
+                                        <div class="col-xs-4">
+                                            <input type="text" class="form-control" value="74777776@qq.com"/>
+                                        </div>
+                                        <p class="control-label  col-xs-2 ">腾讯微博</p>
+                                        <div class="col-xs-4">
+                                            <input type="text" class="form-control" value="107777771"/>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <p class="control-label  col-xs-2 ">网址</p>
+                                        <div class="col-xs-4">
+                                            <input type="text" class="form-control" value="http://www.nongchang.com"/>
+                                        </div>
+                                        <p class="control-label  col-xs-2 ">联系人</p>
+                                        <div class="col-xs-4">
+                                            <input type="text" class="form-control" value="王主任"/>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <p class="control-label  col-xs-2 ">联系电话</p>
+                                        <div class="col-xs-4">
+                                            <input type="text" class="form-control" value="	0451-87963519-815"/>
+                                        </div>
+                                        <p class="control-label  col-xs-2 ">邮箱</p>
+                                        <div class="col-xs-4">
+                                            <input type="text" class="form-control" value="11@sina.com"/>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <p class="control-label  col-xs-2 ">企业图片</p>
+                                        <div class="col-xs-4 plus-qiyetupian ">
+                                            <img src="images/14606400122045a08c.JPG" width="200" height="145"/>
+                                            <a href="#"><span class="delete-box glyphicon glyphicon-trash"
+                                                              aria-hidden="true"></span></a>
+                                        </div>
+                                        <div class="col-xs-4  col-xs-offset-1 add-qiyetupian">
+                                            <a href="#" class="btn">+</a>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <p class="control-label  col-xs-2 ">企业荣誉</p>
+                                        <div class="col-xs-4 plus-qiyetupian ">
+                                            <img src="images/14606400119733911b.JPG" width="200" height="145"/>
+                                            <a href="#"><span class="delete-box glyphicon glyphicon-trash"
+                                                              aria-hidden="true"></span></a>
+                                        </div>
+                                        <div class="col-xs-4  col-xs-offset-1 add-qiyetupian">
+                                            <a href="#" class="btn">+</a>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default"
+                                        data-dismiss="modal">
+                                    关闭
+                                </button>
+                                <button type="button" class="btn btn-primary" data-dismiss="modal">
+                                    提交更改
+                                </button>
+                            </div>
+                        </div><!-- /.modal-content -->
+                    </div><!-- /.modal-dialog -->
+                </div><!-- /.modal -->
+            </div>
+        </div>
+    </div>
+</main>
+<!--主体end-->
+
+<!--查看荣誉-->
+<div class="modal fade" id="chakanrongyu" tabindex="-1" role="dialog"
+     aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"
+                        aria-hidden="true">×
+                </button>
+                <img src="images/14606400119733911b.JPG" alt="" width="550"/>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<!--<script>-->
+<!--var s = document.createElement('script');-->
+<!--s.onload = function () {-->
+<!--bootlint.showLintReportForCurrentDocument([]);-->
+<!--}-->
+<!--s.src = 'js/bootlint.js';-->
+<!--document.body.appendChild(s);-->
+<!--</script>-->
+</body>
+</html>

@@ -6,9 +6,15 @@ spring:
     username: root
     password: root
     driver-class-name: com.mysql.cj.jdbc.Driver
+    initialization-mode: always
   resources:
-    static-locations: classpath:templates/
+    static-locations: classpath:/
+  mvc:
+    view:
+      suffix: .html
 
+server:
+  port: 8888
 
 mybatis-plus:
   mapper-locations: classpath:/mapper/*Mapper.xml
@@ -23,6 +29,6 @@ logging:
   pattern:
     console: '%-5level %C.%M[%line] - %msg%n'
 
-
-
+img:
+  root: E:\img\
 

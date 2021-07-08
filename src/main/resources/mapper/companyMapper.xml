@@ -10,5 +10,6 @@
     <select id="selectAllCompany" parameterType="int" resultType="com.zxh.dev.entity.Company">
         select *
         from company
+        where comId = #{id}
     </select>
 </mapper>

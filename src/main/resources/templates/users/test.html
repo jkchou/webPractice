@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>test</title>
+    <meta charset="UTF-8">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <table>
+        <thead>
+        <tr>
+            <th>id</th>
+            <th>姓名</th>
+            <th>年龄</th>
+        </tr>
+        </thead>
+        <tr>
+            <td>{{user.id}}</td>
+            <td>{{user.name}}</td>
+            <td>{{user.age}}</td>
+        </tr>
+    </table>
+    <div>
+        <label>
+            select:
+            <input type="text" v-model="selectId">
+        </label>
+        <button @click="select">select</button>
+        <p>insert:</p>
+        <label>
+            name:
+            <input type="text" v-model="insertUser.name">
+        </label>
+        <label>
+            age:
+            <input type="text" v-model="insertUser.age">
+        </label>
+        <button @click="insert">insert</button>
+        <br>
+        {{insertUser}}
+        <p>update:</p>
+        <label>
+            id:
+            <input type="text" v-model="updateUser.id">
+        </label>
+        <label>
+            name:
+            <input type="text" v-model="updateUser.name">
+        </label>
+        <label>
+            age:
+            <input type="text" v-model="updateUser.age">
+        </label>
+        <button @click="update">update</button>
+        <br>
+        <label>
+            delete:
+            <input type="text" v-model="deleteId">
+        </label>
+        <button @click="deleteById">delete</button>
+    </div>
+</div>
+<script>
+    window.onload = function () {
+        var vue = new Vue({
+            el: '#app',
+            data: {
+                user: [],
+                selectId: 1,
+                deleteId: 1,
+                insertUser: {
+                    "id": 0,
+                    "name": "test",
+                    "age": 1
+                },
+                updateUser: {
+                    "id": 1,
+                    "name": "test",
+                    "age": 1
+                }
+            },
+            methods: {
+                select() {
+                    var formData = new FormData;
+                    formData.append("id", this.selectId);
+                    axios.post('/api/users/select', formData, {
+                        headers: {"Content-Type": "multipart/form-data"}
+                    }).then(respond => {
+                        console.log(respond.data);
+                    });
+                },
+                insert() {
+                    axios.post('/api/users/insert', this.insertUser)
+                        .then(response => {
+                            console.log(response.data);
+                        });
+                },
+                update() {
+                    axios.post('/api/users/update', this.updateUser)
+                        .then(response => {
+                            console.log(response.data);
+                        });
+                },
+                deleteById() {
+                    var formData = new FormData;
+                    formData.append("id", this.deleteId);
+                    axios.post('/api/users/delete', formData, {
+                        headers: {"Content-Type": "multipart/form-data"}
+                    }).then(respond => {
+                        console.log(respond.data);
+                    });
+                }
+            },
+            created() {
+                this.select();
+            }
+        });
+    }
+</script>
+</body>
+</html>

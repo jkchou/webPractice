@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>计划-排产-添加</title>
+    <link href="../../static/css/bootstrap.css" rel="stylesheet">
+    <link href="../../static/css/index.css" rel="stylesheet">
+    <script src="../../static/js/jquery-1.11.3.js"></script>
+    <script src="../../static/js/bootstrap.js"></script>
+    <script src="../../static/js/index.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+</head>
+<body>
+<!--导航start-->
+<nav class="navbar navbar-fixed-top">
+    <div class="container-fluid ">
+        <div class="row">
+            <div class="col-md-2 nav-logo">
+                <a href="首页.html"><img src="../../static/images/logo.png"/></a>
+            </div>
+            <div class="col-md-10 navbar1">
+                <p class="navbar-text">信息沟通世界&nbsp;&nbsp;科技服务三农</p>
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="销售-订单管理.html"><span class="glyphicon glyphicon-volume-up"></span>&nbsp;<span>订单<span
+                                class="badge">1</span></span></a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                            <span class="glyphicon glyphicon-info-sign"></span>&nbsp;
+                            <span>帮助</span>
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-right">
+                            <li class="text-center"><a href="#"><span class="text-primary"><span
+                                    class="glyphicon glyphicon-phone-alt"></span>&nbsp;&nbsp;0451-87963519-815</span></a>
+                            </li>
+                            <li class="text-center"><a href="#"><span class="text-primary"><span
+                                    class="glyphicon glyphicon-comment"></span>&nbsp;&nbsp;互助问答</span></a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                            <span class="glyphicon glyphicon-user"></span>&nbsp;
+                            <span>农业集团科技有限公司</span>
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-right">
+                            <li class="text-center"><a href="资源-公司信息.html"><span class="text-primary"><span
+                                    class="glyphicon glyphicon-cog"></span>&nbsp;&nbsp;企业设置</span></a></li>
+                            <li class="text-center"><a href="首页.html"><span class="text-primary"><span
+                                    class="glyphicon glyphicon-home"></span>&nbsp;&nbsp;个人首页</span></a></li>
+                            <li class="text-center"><a href="资源-站内信息.html"><span class="text-primary"><span
+                                    class="glyphicon glyphicon-envelope"></span>&nbsp;&nbsp;系统消息</span></a></li>
+                            <li class="text-center"><a href="修改密码.html"><span class="text-primary"><span
+                                    class="glyphicon glyphicon-lock"></span>&nbsp;&nbsp;修改密码</span></a></li>
+
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="登录.html">
+                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span>退出</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>
+<!--导航end-->
+<!--主体开始-->
+<main>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-2 navbar2 sidebar">
+                <h3>翔 农 云 农 场</h3>
+                <h4>www.nongchang.com</h4>
+                <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                    <div class="panel panel-default">
+                        <a class="nav-panel nav-left1" data-toggle="collapse" data-parent="#accordion"
+                           href="#collapseOne" aria-expanded="true"
+                           aria-controls="collapseOne">
+                            <i class="ziyuan"></i>
+                            <i class="panel-left1">资&nbsp;源</i>
+                        </a>
+                        <div id="collapseOne" class="panel-collapse collapse">
+                            <ul class="nav  nav-list">
+                                <li><a href="资源-公司信息.html">公司信息</a></li>
+                                <li><a href="资源-认证信息.html">认证信息</a></li>
+                                <li><a href="资源-员工管理-基地负责人.html">员工信息</a></li>
+                                <li><a href="资源-园区管理.html">园区管理</a></li>
+                                <li><a href="资源-农机管理.html">农机管理</a></li>
+                                <li><a href="资源-设备管理.html">设备管理</a></li>
+                                <li><a href="资源-站内信息.html">站内信息</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <a class="nav-panel nav-left1" data-toggle="collapse" data-parent="#accordion"
+                           href="#collapseOne1" aria-expanded="true"
+                           aria-controls="collapseOne1">
+                            <i class="jihua"></i>
+                            <i class="panel-left1">计&nbsp;划</i>
+                        </a>
+                        <div id="collapseOne1" class="panel-collapse collapse">
+                            <ul class="nav  nav-list">
+                                <li><a href="计划-种类.html">种 类</a></li>
+                                <li><a href="scheduling.html">排 产</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <a class="nav-panel nav-left1" data-toggle="collapse" data-parent="#accordion"
+                           href="#collapseOne2" aria-expanded="true"
+                           aria-controls="collapseOne2">
+                            <i class="shengchan"></i>
+                            <i class="panel-left1">生&nbsp;产</i>
+                        </a>
+                        <div id="collapseOne2" class="panel-collapse collapse">
+                            <ul class="nav  nav-list">
+                                <li><a href="生产-农事.html">农事管理</a></li>
+                                <li><a href="生产-预警管理.html">预警管理</a></li>
+                                <li><a href="生产-监测.html">监 测</a></li>
+                                <li><a href="生产-控制.html">控 制</a></li>
+                                <li><a href="生产-气象.html">气 象</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <a class="nav-panel nav-left1" data-toggle="collapse" data-parent="#accordion"
+                           href="#collapseOne4" aria-expanded="true"
+                           aria-controls="collapseOne4">
+                            <i class="xiaoshou"></i>
+                            <i class="panel-left1">销&nbsp;售</i>
+                        </a>
+                        <div id="collapseOne4" class="panel-collapse collapse">
+                            <ul class="nav  nav-list">
+                                <li><a href="销售-订单管理.html">订单管理</a></li>
+                                <li><a href="销售-价格.html">价格管理</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <a class="nav-panel nav-left1" data-toggle="collapse" data-parent="#accordion"
+                           href="#collapseOne5" aria-expanded="true"
+                           aria-controls="collapseOne5">
+                            <i class="lvli"></i>
+                            <i class="panel-left1">商&nbsp;品</i>
+                        </a>
+                        <div id="collapseOne5" class="panel-collapse collapse">
+                            <ul class="nav  nav-list">
+                                <li><a href="商品-加工.html">加 工</a></li>
+                                <li><a href="商品-损耗.html">损 耗</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <a class="nav-panel nav-left1" data-toggle="collapse" data-parent="#accordion"
+                           href="#collapseOne6" aria-expanded="true"
+                           aria-controls="collapseOne6">
+                            <i class="jiagong"></i>
+                            <i class="panel-left1">配&nbsp;送</i>
+                        </a>
+                        <div id="collapseOne6" class="panel-collapse collapse">
+                            <ul class="nav  nav-list">
+                                <li><a href="配送-物流管理.html">物流管理</a></li>
+                                <li><a href="履历-履历管理.html">履历管理</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <a class="nav-panel nav-left1" data-toggle="collapse" data-parent="#accordion"
+                           href="#collapseOne7" aria-expanded="true"
+                           aria-controls="collapseOne7">
+                            <i class="fenxi"></i>
+                            <i class="panel-left1">统&nbsp;计</i>
+                        </a>
+                        <div id="collapseOne7" class="panel-collapse collapse">
+                            <ul class="nav nav-list">
+                                <li><a href="汇总-历年产量对比-投产量.html">汇 总</a></li>
+                                <li><a href="分析-农事管理分析-环境监控历史纪录.html">分 析</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--左侧nav end-->
+            <!--右侧内容开始-->
+            <div class="col-xs-10 center_box">
+                <div class="row">
+                    <div class="col-xs-12 nongji-btn">
+                        <span>计划&nbsp;&gt;&nbsp;&nbsp;排产&nbsp;&gt;&nbsp;&nbsp;添加</span>
+                    </div>
+                </div>
+                <form class="form-horizontal" role="form">
+                    <fieldset>
+                        <legend>基本信息</legend>
+                        <div class="form-group">
+                            <p class="col-xs-1 col-xs-offset-1 control-label">块地</p>
+                            <div class="col-xs-3">
+                                <select class="form-control" id="plotId">
+                                    <option value="">请选择112</option>
+                                    <option value="">地块1</option>
+                                    <option value="">地块2</option>
+                                </select>
+                            </div>
+                            <p class="col-xs-1 col-xs-offset-1 control-label">区域</p>
+                            <div class="col-xs-3">
+                                <select class="form-control" id="greenHouse">
+                                    <option value="">请选择</option>
+                                    <option value="">21号大棚</option>
+                                    <option value="">22号大棚</option>
+                                    <option value="">23号大棚</option>
+                                    <option value="">24号大棚</option>
+                                    <option value="">25号大棚</option>
+                                    <option value="">26号大棚</option>
+                                    <option value="">27号大棚</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <p class="col-xs-1 col-xs-offset-1 control-label">种植品种</p>
+                            <div class="col-xs-3">
+                                <select class="form-control" id="variety">
+                                    <option value="">请选择</option>
+                                    <option value="">大豆</option>
+                                    <option value="">龙薯</option>
+                                </select>
+                            </div>
+                            <p class="col-xs-1 col-xs-offset-1 control-label">种植种类</p>
+                            <div class="col-xs-3">
+                                <select class="form-control" id="category">
+                                    <option value="">请选择</option>
+                                    <option value="">大豆类</option>
+                                    <option value="">薯类</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <p class="col-xs-1 col-xs-offset-1 control-label">茬</p>
+                            <div class="col-xs-3">
+                                <input type="text" class="form-control" value="" id="name"/>
+                            </div>
+                        </div>
+                    </fieldset>
+                    <fieldset>
+                        <legend>采收信息</legend>
+                        <div class="form-group">
+                            <p class="col-xs-1 col-xs-offset-1 control-label">预估产量</p>
+                            <div class="col-xs-3">
+                                <input type="text" class="form-control" value="" id="foreCast"/>
+                            </div>
+                            <p class="col-xs-1 col-xs-offset-1 control-label">实际产品</p>
+                            <div class="col-xs-3">
+                                <input type="text" class="form-control" value="" id="realCast"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <p class="col-xs-1 col-xs-offset-1 control-label">种植面积</p>
+                            <div class="col-xs-3">
+                                <input type="text" class="form-control" value="" id="plantArea"/>
+                            </div>
+                            <div class="col-xs-2 beizhu">
+                                <p>亩/0.57亩可用</p>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+                <div class="form-group nongjidetail-btn">
+                    <div class="col-xs-offset-5">
+                        <button class="btn btn-primary" onclick="newSche()">提交</button>
+                        <button class="btn btn-default" type="button">返回</button>
+                    </div>
+                </div>
+            </div>
+            <!--右侧内容end-->
+        </div>
+    </div>
+</main>
+<!--主体end-->
+<!--<script>-->
+<!--var s = document.createElement('script');-->
+<!--s.onload = function () {-->
+<!--bootlint.showLintReportForCurrentDocument([]);-->
+<!--}-->
+<!--s.src = 'js/bootlint.js';-->
+<!--document.body.appendChild(s);-->
+<!--</script>-->
+<script>
+    var scheduling = {
+        delFlag: null,
+        farmProductionsCategoryId: null,
+        farmProductionsVarietyId: null,
+        foreCast: null,
+        greenHouseId: null,
+        id: null,
+        name: null,
+        officeId: null,
+        plantArea: null,
+        plotId: null,
+        realCast: null,
+        remarks: null,
+        createBy: null,
+        createDate: null,
+        updateBy: null,
+        updateDate: null,
+    };
+
+    function insert() {
+        axios.post('/api/scheduling/insert', scheduling)
+            .then(respond => {
+                if (respond.status === 200) {
+                    alert("提交成功")
+                    location.reload();
+                }
+            });
+    }
+
+    function newSche() {
+        //地块
+        var value = $("#plotId option:selected").text();
+        scheduling.plotId = parseInt(value.replace(/[^\d]/g, ' '));
+        //区域
+        value = $("#greenHouse option:selected").text();
+        scheduling.greenHouseId = parseInt(value.replace(/[^\d]/g, ' '));
+        //种类
+        value = $("#category option:selected").text();
+        scheduling.farmProductionsCategoryId = value;
+        //品种
+        value = $("#variety option:selected").text();
+        scheduling.farmProductionsVarietyId = value;
+        //茬
+        value = $("#name").val();
+        scheduling.name = value;
+        //预估产量
+        value = $("#foreCast").val();
+        scheduling.foreCast = parseInt(value);
+        //实际产量
+        value = $("#realCast").val();
+        scheduling.realCast = parseInt(value);
+        //种植面积
+        value = $("#plantArea").val();
+        scheduling.plantArea = parseInt(value);
+
+        setTimeout(function () {
+            insert();
+        }, 90);
+    }
+
+
+</script>
+</body>
+</html>

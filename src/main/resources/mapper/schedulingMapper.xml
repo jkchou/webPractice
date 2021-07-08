@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zxh.dev.mapper.SchedulingMapper">
+    <delete id="deleteById" parameterType="Integer">
+        update scheduling
+        set delFlag=0
+        where id = #{id}
+    </delete>
+    <!--<insert id="insert" parameterType="com.zxh.dev.entity.Scheduling">
+        insert into scheduling (name, plantArea, foreCast, realCast, officeId, plotId, greenHouseId, farmProductionsCategoryId, farmProductionsVarietyId, remarks,createBy,updateBy,createDate, updateDate)
+        VALUES (#{name},#{plantArea},#{foreCast},#{realCast},#{officeId},#{plotId},#{greenHouseId},#{farmProductionsCategoryId},#{farmProductionsVarietyId},#{remarks},#{createBy},0,current_timestamp,0)
+    </insert>-->
+    <!--<update id="updateById" parameterType="com.zxh.dev.entity.Scheduling">
+        update scheduling
+        <set>
+            <if test="name!=null">name=#{name}</if>
+            <if test="plantArea!=null">plantArea = #{plantArea}</if>
+            <if test="foreCast!=null">foreCast = #{foreCast}</if>
+            <if test="realCast!=null">realCast = #{realCast}</if>
+            <if test="officeId!=null">officeId = #{officeId}</if>
+            <if test="plotId!=null">plotId = #{plotId}</if>
+            <if test="greenHouseId!=null">greenHouseId = #{greenHouseId}</if>
+            <if test="farmProductionsCategoryId!=null">farmProductionsCategoryId = #{farmProductionsCategoryId}</if>
+            <if test="farmProductionsVarietyId!=null">farmProductionsVarietyId = #{farmProductionsVarietyId}</if>
+            <if test="remarks!=null">remarks = #{remarks}</if>
+            <if test="updateBy!=null">updateBy = #{updateBy}</if>
+            <if test="updateDate!=null">updateDate = current_timestamp </if>
+        </set>
+        where id = #{id}
+    </update>-->
+</mapper>
