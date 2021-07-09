@@ -16,16 +16,14 @@ public class FarmproductionsCategoryControl {
     @Autowired
     private FarmproductionsCategoryService fcService;
     @RequestMapping("/selectAll")
-    @ResponseBody
-    public String selectAll(Model model){
+    public Model selectAll(Model model){
         List<FarmproductionsCategory> farmproductionsCategoryList=fcService.FarmproductionsCategorySelectAll();
         model.addAttribute("List",farmproductionsCategoryList);
-        return model.toString();
+        return model;
     }
     @RequestMapping("/selectById")
-    @ResponseBody
-    public String selectById(int id){
-        FarmproductionsCategory farmproductionsCategory=fcService.FarmproductionsCategorySelectById(1);
-        return farmproductionsCategory.toString();
+    public FarmproductionsCategory selectById(int id){
+        FarmproductionsCategory farmproductionsCategory=fcService.FarmproductionsCategorySelectById(id);
+        return farmproductionsCategory;
     }
 }
