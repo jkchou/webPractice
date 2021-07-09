@@ -25,10 +25,8 @@ logging:
   level:
     root: warn
     com:
-      zxh: debug
+      shicepku: debug
   pattern:
     console: '%-5level %C.%M[%line] - %msg%n'
 
-img:
-  root: E:\img\
 

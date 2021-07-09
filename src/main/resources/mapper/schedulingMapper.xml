@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.zxh.dev.mapper.SchedulingMapper">
+<mapper namespace="com.shicepku.mapper.SchedulingMapper">
     <delete id="deleteById" parameterType="Integer">
         update scheduling
         set delFlag=0
         where id = #{id}
     </delete>
-    <!--<insert id="insert" parameterType="com.zxh.dev.entity.Scheduling">
+    <!--<insert id="insert" parameterType="Scheduling">
         insert into scheduling (name, plantArea, foreCast, realCast, officeId, plotId, greenHouseId, farmProductionsCategoryId, farmProductionsVarietyId, remarks,createBy,updateBy,createDate, updateDate)
         VALUES (#{name},#{plantArea},#{foreCast},#{realCast},#{officeId},#{plotId},#{greenHouseId},#{farmProductionsCategoryId},#{farmProductionsVarietyId},#{remarks},#{createBy},0,current_timestamp,0)
     </insert>-->
-    <!--<update id="updateById" parameterType="com.zxh.dev.entity.Scheduling">
+    <!--<update id="updateById" parameterType="Scheduling">
         update scheduling
         <set>
             <if test="name!=null">name=#{name}</if>

@@ -1,19 +1,17 @@
-package com.zxh.dev.controller;
+package com.shicepku.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.zxh.dev.DTO.ResultDTO;
-import com.zxh.dev.bean.User;
-import com.zxh.dev.entity.Scheduling;
-import com.zxh.dev.mapper.SchedulingMapper;
-import com.zxh.dev.service.SchedulingService;
+import com.shicepku.DTO.ResultDTO;
+import com.shicepku.entity.Scheduling;
+import com.shicepku.mapper.SchedulingMapper;
+import com.shicepku.service.SchedulingService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
-import java.util.List;
 import java.util.Map;
 
 @Slf4j
@@ -27,7 +25,7 @@ public class SchedulingController {
 
 
     @PostMapping("/selectById")
-    public Scheduling select(Integer id) {
+    public Scheduling selectById(Integer id) {
         return schedulingMapper.selectById(id);
     }
 

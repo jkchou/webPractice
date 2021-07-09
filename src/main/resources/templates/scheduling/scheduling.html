@@ -7,7 +7,7 @@
     <title>计划-排产</title>
     <link href="../../static/css/bootstrap.css" rel="stylesheet">
     <link href="../../static/css/index.css" rel="stylesheet">
-    <script src="../../static/js/jquery-1.11.3.js"></script>
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="../../static/js/bootstrap.js"></script>
     <script src="../../static/js/index.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
@@ -324,24 +324,7 @@
     function selectPage() {
         var id = 0;
         var categoryId = document.getElementById("category").value;
-        /*switch (categoryId) {
-            case "全部":
-                categoryId = 0;
-                break;
-            case "大豆类":
-                id = 1;
-                break;
-            case "薯类":
-                id = 2;
-                break;
-            case "蔬菜类":
-                id = 3;
-                break;
-            case "水果类":
-                id = 4;
-                break;
-        }*/
-
+        console.log(categoryId);
         var formData = new FormData;
         formData.append("categoryId", categoryId);
         formData.append("current", currentPage);

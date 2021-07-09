@@ -1,4 +1,4 @@
-package com.zxh.dev.DTO;
+package com.shicepku.DTO;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

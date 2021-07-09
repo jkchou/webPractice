@@ -1,29 +1,19 @@
-package com.zxh.dev.mybatis;
+package com.shicepku.mybatis;
 
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.zxh.dev.bean.User;
-import com.zxh.dev.entity.Company;
-import com.zxh.dev.entity.Scheduling;
-import com.zxh.dev.mapper.CompanyMapper;
-import com.zxh.dev.mapper.SchedulingMapper;
-import com.zxh.dev.mapper.UserMapper;
-import com.zxh.dev.service.SchedulingService;
-import com.zxh.dev.utils.PictureUtils;
+import com.shicepku.service.SchedulingService;
+import com.shicepku.entity.Scheduling;
+import com.shicepku.mapper.SchedulingMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.io.File;
-import java.io.IOException;
-import java.math.BigDecimal;
-import java.sql.Timestamp;
 import java.util.List;
 
 @Slf4j
@@ -31,10 +21,6 @@ import java.util.List;
 @SpringBootTest
 @Rollback(value = false)
 public class MapperTest {
-    @Autowired
-    UserMapper userMapper;
-    @Autowired
-    CompanyMapper companyMapper;
     @Autowired
     SchedulingMapper schedulingMapper;
 
@@ -60,7 +46,7 @@ public class MapperTest {
     @Test
     void testScheduling() {
         Scheduling scheduling = new Scheduling();
-        scheduling.setName("test");
+        scheduling.setName("test2222");
         scheduling.setPlantArea(10.0);
         scheduling.setForeCast(500.0);
         scheduling.setRealCast(600.0);
@@ -75,13 +61,14 @@ public class MapperTest {
         //scheduling.setCreateDate(new Timestamp(System.currentTimeMillis()));
         //scheduling.setUpdateDate(new Timestamp(System.currentTimeMillis()));
         schedulingMapper.insert(scheduling);
+        log.debug("{}", scheduling);
     }
 
     @Test
     void updateSche() {
         Scheduling scheduling = new Scheduling();
-        scheduling.setId(1);
-        scheduling.setFarmProductionsCategoryId("大豆");
+        scheduling.setId(20);
+        scheduling.setFarmProductionsCategoryId("大豆1111");
         scheduling.setGreenHouseId(2);
         scheduling.setUpdateBy(2);
         //scheduling.setUpdateDate(new Timestamp(System.currentTimeMillis()));
@@ -106,57 +93,9 @@ public class MapperTest {
         }
     }
 
-
     @Test
-    void testUser() {
-        User user = new User();
-        user.setName("asd");
-        user.setAge(90);
-        int i = userMapper.insert(user);
-        log.debug("{}", user);
-        log.debug("{}", i);
-    }
-
-    @Test
-    void testCompany() {
-        Company company = new Company();
-        company.setComName("test");
-        System.out.println(companyMapper);
-        int i = companyMapper.insert(company);
-//        System.out.println(i);
-        log.debug("{}", i);
-    }
-
-    @Value("${img.root}")
-    private String imgRoot;
-
-    Company company = new Company();
-
-    @Test
-    void insert() throws IOException {
-        company.setComName("香坊区高新科技有限公司");
-        company.setContactor("zhuhaoxing");
-        company.setContactTel("13154656781");
-        company.setSinaWeibo("xiangfang.sina.com");
-        company.setTencentWeibo("xiangfang.weibo");
-        company.setEmail("18654564@me.com");
-        company.setUrl("www.xiangfang.com");
-        company.setCreator("1001");
-        String picture = imgRoot + "1.jpg";
-        String comHonor = imgRoot + "2.jpg";
-        company.setComPicture(picture);
-        company.setComHonor(comHonor);
-        company.setRemark("这个公司不得了");
-
-        companyMapper.insert(company);
-        //System.out.println(company);
-    }
-
-
-    @Test
-    void setImgRoot() {
-        String imgPath = "1.jpg";
-        log.debug("{}", imgRoot + imgPath);
+    void selectById() {
+        log.debug("{}", schedulingMapper.selectById(1));
     }
 
 }

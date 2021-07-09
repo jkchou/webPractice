@@ -1,4 +1,4 @@
-package com.zxh.dev.entity;
+package com.shicepku.entity;
 
 import com.baomidou.mybatisplus.annotation.*;
 import lombok.*;
