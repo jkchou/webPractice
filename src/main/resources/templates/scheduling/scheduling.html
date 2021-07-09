@@ -297,9 +297,6 @@
 
     window.onload = function () {
         selectPage();
-        /*setTimeout(function () {
-            changeTable();
-        }, 30);  //5秒后将会调用执行remind()函数*/
     }
 
     function showValue(obj) {
@@ -324,7 +321,7 @@
     function selectPage() {
         var id = 0;
         var categoryId = document.getElementById("category").value;
-        console.log(categoryId);
+        console.log("1");
         var formData = new FormData;
         formData.append("categoryId", categoryId);
         formData.append("current", currentPage);
@@ -332,9 +329,10 @@
         axios.post('/api/scheduling/selectPage', formData, {
             headers: {"Content-Type": "multipart/form-data"}
         }).then(respond => {
-            if (respond.data.records.length !== 0)
+            if (respond.data.records.length !== 0) {
                 schedulings = respond.data.records;
-            else schedulings = null;
+                console.log("2")
+            } else schedulings = null;
             pages = respond.data.pages;
             total = respond.data.total;
         });
@@ -343,14 +341,17 @@
             $("#currentPage").text("第" + currentPage + "页")
             $("#totalPages").text("共" + pages + "页")
             changeTable();
-        }, 150);
+        }, 200);
     }
 
     function changeTable() {
+        console.log("3")
         if (schedulings === null) {
+            console.log("4")
             var str = "<tr></tr>";
             $("#table").html(str);
         } else {
+            console.log("4")
             var str = "";
             var num = 0;
             for (let i in schedulings) {
