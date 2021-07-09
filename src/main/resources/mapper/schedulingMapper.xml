@@ -3,7 +3,7 @@
 <mapper namespace="com.shicepku.mapper.SchedulingMapper">
     <delete id="deleteById" parameterType="Integer">
         update scheduling
-        set delFlag=0
+        set del_flag=0
         where id = #{id}
     </delete>
     <!--<insert id="insert" parameterType="Scheduling">

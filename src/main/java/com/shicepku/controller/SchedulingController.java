@@ -33,7 +33,7 @@ public class SchedulingController {
     @PostMapping("/selectPage")
     public IPage<Scheduling> selectPage(String categoryId, int current, int size) {
         QueryWrapper<Scheduling> schedulingQueryWrapper = new QueryWrapper<>();
-        schedulingQueryWrapper.eq("delFlag", 1);
+        schedulingQueryWrapper.eq("del_flag", 1);
         if (!categoryId.equals("全部"))
             schedulingQueryWrapper.eq("farmProductionsCategoryId", categoryId);
         Page<Scheduling> page = new Page<>(current, size);
