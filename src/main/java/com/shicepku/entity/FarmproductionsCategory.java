@@ -2,6 +2,9 @@ package com.shicepku.entity;
 
 
 public class FarmproductionsCategory {
+  public FarmproductionsCategory() {
+  }
+
   @Override
   public String toString() {
     return "FarmproductionsCategory{" +
@@ -22,9 +25,9 @@ public class FarmproductionsCategory {
             ", updateBy='" + updateBy + '\'' +
             ", updateDate=" + updateDate +
             ", officeId=" + officeId +
+            ", delFlag=" + delFlag +
             '}';
   }
-
   private long id;
   private long parentId;
   private String name;
@@ -42,7 +45,15 @@ public class FarmproductionsCategory {
   private String updateBy;
   private java.sql.Timestamp updateDate;
   private long officeId;
+  private int delFlag;
 
+  public int getDelFlag() {
+    return delFlag;
+  }
+
+  public void setDelFlag(int delFlag) {
+    this.delFlag = delFlag;
+  }
 
   public long getId() {
     return id;

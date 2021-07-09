@@ -20,3 +20,28 @@ create table if not exists scheduling
     updateDate                timestamp       not null default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP comment '更新时间'
 )
     comment '排产';
+
+create table if not exists farmproductions_category
+(
+    id           bigint auto_increment
+        primary key,
+    parent_id    int                  not null,
+    name         varchar(100)         null,
+    edescribe    varchar(500)         null,
+    ylut         decimal(10, 2)       null,
+    growth_cycle varchar(50)          null,
+    planting_in  datetime             null,
+    mature_in    datetime             null,
+    picture      varchar(500)         null,
+    parent_ids   varchar(2000)        null,
+    create_date  timestamp            not null default CURRENT_TIMESTAMP ,
+    create_by    varchar(64)          not null,
+    sort         decimal              not null,
+    status       decimal(1) default 1 not null,
+    update_by    varchar(64)          not null,
+    update_date  timestamp            not null default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP,
+    office_id    bigint               null,
+    del_flag     int default 1 not null
+)
+    comment '种类'
+
