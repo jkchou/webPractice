@@ -6,7 +6,7 @@
         set delFlag=0
         where id = #{id}
     </delete>
-    <!--<insert id="insert" parameterType="Scheduling">
+    <insert id="insert" parameterType="Scheduling">
         insert into scheduling (name, plantArea, foreCast, realCast, officeId, plotId, greenHouseId, farmProductionsCategoryId, farmProductionsVarietyId, remarks,createBy,updateBy,createDate, updateDate)
         VALUES (#{name},#{plantArea},#{foreCast},#{realCast},#{officeId},#{plotId},#{greenHouseId},#{farmProductionsCategoryId},#{farmProductionsVarietyId},#{remarks},#{createBy},0,current_timestamp,0)
     </insert>-->
