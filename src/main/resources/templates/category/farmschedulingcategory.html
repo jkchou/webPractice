@@ -202,50 +202,51 @@
     </div>
         <div class="panel">
            <div class="panel-body">
-               <div class="has-feedback row">
+               <div class="has-feedback row" th:each="category:${List}">
                     <div class="col-xs-2">
                         <a href="#"  role="button" type="button" data-toggle="collapse" data-target="#zhanglei-menu1" onclick="changezhonglei('zhonglei-menu-a')">
                             <span id="zhonglei-menu-a" class="glyphicon glyphicon-chevron-down"></span></a>
                         <img src="images/zhonglei_03.png" alt="大豆" style="margin-left:10px;"/>
                     </div>
                     <div class="col-xs-4">
-                        <h3>大豆类</h3>
-                        <p class="intro">月产：800公斤&nbsp;&nbsp;季产：2000公斤&nbsp;&nbsp; 年产：6000公斤</p>
+                        <h3 th:text="${category.name}"></h3>
+                        <p class="intro" th:text="'月产：'+${category.name}+'&nbsp;&nbsp'+'季产：'+${category.name}+'&nbsp;&nbsp'+'年产：'+${category.name}"></p>
                     </div>
                     <div class="col-xs-1 col-xs-offset-4 delete-list">
                         <a href="#" data-toggle="modal" data-target=".zhonglei2"  aria-hidden="true" type="button" ><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
                         <a href="#"><span class="delete-zhonglei glyphicon glyphicon-remove-sign"></span></a>
                     </div>
               </div>
+<!--               下拉列表开始-->
                <div id="zhanglei-menu1" class="collapse">
                    <div class="has-feedback row">
-                           <div class="col-xs-5 nongjiguanli_box">
+                           <div class="col-xs-5 nongjiguanli_box" th:each="category:${List}">
                                <a href="#"><span class="delete-nj glyphicon glyphicon-remove-sign"></span></a>
                                <a href="#" data-toggle="modal" data-target=".zhonglei22"  aria-hidden="true" type="button" ><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
                                <img src="images/zhonglei_2_10.png">
                                <div class="mingcheng">
-                                   <h4>黄豆</h4>
+                                   <h4 th:text="${category.name}"></h4>
                                    <p class="intro">月产：300公斤&nbsp;&nbsp;季产：400公斤&nbsp;&nbsp; 年产：3000公斤</p>
                                </div>
                            </div>
-                           <div class="col-xs-5 nongjiguanli_box">
-                               <a href="#"><span class="delete-nj glyphicon glyphicon-remove-sign"></span></a>
-                               <a href="#" data-toggle="modal" data-target=".zhonglei22"  aria-hidden="true" type="button" ><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
-                               <img src="images/zhonglei_2_05.png">
-                               <div class="mingcheng">
-                                   <h4>芸豆</h4>
-                                   <p class="intro">月产：200公斤&nbsp;&nbsp;季产：500公斤&nbsp;&nbsp; 年产：2100公斤</p>
-                               </div>
-                           </div>
-                       <div class="col-xs-5 nongjiguanli_box">
-                           <a href="#"><span class="delete-nj glyphicon glyphicon-remove-sign"></span></a>
-                           <a href="#" data-toggle="modal" data-target=".zhonglei22"  aria-hidden="true" type="button" ><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
-                           <img src="images/zhonglei_2_01.png">
-                           <div class="mingcheng">
-                               <h4>绿豆</h4>
-                               <p class="intro">月产：150公斤&nbsp;&nbsp;季产：400公斤&nbsp;&nbsp; 年产：1800公斤</p>
-                           </div>
-                       </div>
+<!--                           <div class="col-xs-5 nongjiguanli_box">-->
+<!--                               <a href="#"><span class="delete-nj glyphicon glyphicon-remove-sign"></span></a>-->
+<!--                               <a href="#" data-toggle="modal" data-target=".zhonglei22"  aria-hidden="true" type="button" ><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>-->
+<!--                               <img src="images/zhonglei_2_05.png">-->
+<!--                               <div class="mingcheng">-->
+<!--                                   <h4>芸豆</h4>-->
+<!--                                   <p class="intro">月产：200公斤&nbsp;&nbsp;季产：500公斤&nbsp;&nbsp; 年产：2100公斤</p>-->
+<!--                               </div>-->
+<!--                           </div>-->
+<!--                       <div class="col-xs-5 nongjiguanli_box">-->
+<!--                           <a href="#"><span class="delete-nj glyphicon glyphicon-remove-sign"></span></a>-->
+<!--                           <a href="#" data-toggle="modal" data-target=".zhonglei22"  aria-hidden="true" type="button" ><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>-->
+<!--                           <img src="images/zhonglei_2_01.png">-->
+<!--                           <div class="mingcheng">-->
+<!--                               <h4>绿豆</h4>-->
+<!--                               <p class="intro">月产：150公斤&nbsp;&nbsp;季产：400公斤&nbsp;&nbsp; 年产：1800公斤</p>-->
+<!--                           </div>-->
+<!--                       </div>-->
                        <div class="col-xs-5 nongjiguanli_emptybox">
                            <div class="row">
                                <div class="col-xs-1 col-xs-offset-4">
@@ -258,7 +259,9 @@
                        </div>
                    </div>
             </div>
+<!--               下拉列表结束-->
          </div>
+<!--            种类框结束-->
             <div class="panel">
                 <div class="panel-body">
                     <div class="has-feedback row">

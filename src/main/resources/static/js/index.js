@@ -126,6 +126,9 @@ function changezhonglei(id) {
     var tag = str.substring(20, str.length);
     if (tag == "chevron-down") {
         document.getElementById(id).className = "glyphicon glyphicon-chevron-up";
+        $.ajax({
+            url:"/FarmSchedulingCategory/getScheduling",
+        })
     } else {
         document.getElementById(id).className = "glyphicon glyphicon-chevron-down";
     }

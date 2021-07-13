@@ -1,12 +1,15 @@
 package com.shicepku.controller;
 
 import com.shicepku.entity.FarmproductionsCategory;
+import com.shicepku.entity.Scheduling;
 import com.shicepku.service.FarmproductionsCategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
@@ -27,10 +30,10 @@ public class FarmproductionsCategoryControl {
         return res;
     }
     @RequestMapping("/selectAll")
-    public Model selectAll(Model model){
+    public ModelAndView selectAll(Model model){
         List<FarmproductionsCategory> farmproductionsCategoryList=fcService.FarmproductionsCategorySelectAll();
         model.addAttribute("List",farmproductionsCategoryList);
-        return model;
+        return new ModelAndView("/category/farmschedulingcategory");
     }
     @RequestMapping("/selectById")
     public FarmproductionsCategory selectById(int id){
@@ -42,4 +45,8 @@ public class FarmproductionsCategoryControl {
         int res= fcService.FarmproductionsCategoryInsert(farmproductionsCategory);
         return res;
     }
+//    @RequestMapping(value = "/getScheduling",method= RequestMethod.POST)
+//    public String getScheduling(Model model){
+//        List<Scheduling> schedulings=
+//    }
 }
