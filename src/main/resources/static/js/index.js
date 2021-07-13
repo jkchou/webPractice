@@ -124,10 +124,25 @@ function changeFeedback(id) {
 function changezhonglei(id) {
     var str = document.getElementById(id).className;
     var tag = str.substring(20, str.length);
+    var category_name=$("#category_name").text();
+    console.log(category_name);
     if (tag == "chevron-down") {
         document.getElementById(id).className = "glyphicon glyphicon-chevron-up";
         $.ajax({
             url:"/FarmSchedulingCategory/getScheduling",
+            method:"post",
+            dataType: "json",
+            data:{
+                "category":category_name
+            },
+
+            success: function(data){
+                console.log(category_name);
+            },
+            error:function(err) {
+                console.log(err.statusText);
+                console.log('异常');
+            }
         })
     } else {
         document.getElementById(id).className = "glyphicon glyphicon-chevron-down";
