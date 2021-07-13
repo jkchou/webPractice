@@ -15,9 +15,11 @@ import java.util.List;
 public class FarmproductionsCategoryControl {
     @Autowired
     private FarmproductionsCategoryService fcService;
+    //类别 月产 季产 年产
 //    @RequestMapping("/update")
-//    public int  update(){
-//
+//    public int  update(int id,FarmproductionsCategory farmproductionsCategory){
+//        int res= fcService.FarmproductionsCategoryUpdate(farmproductionsCategory);
+//        return res;
 //    }
     @RequestMapping("/delectById")
     public  int delectById(int id){

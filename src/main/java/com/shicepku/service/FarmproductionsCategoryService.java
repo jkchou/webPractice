@@ -23,4 +23,7 @@ public class FarmproductionsCategoryService {
     public int FarmproductionsCategoryDeleteById(int id){
         return ffcMapper.deleteById(id);
     }
+    public int FarmproductionsCategoryUpdate(FarmproductionsCategory farmproductionsCategory){
+        return ffcMapper.updateById(farmproductionsCategory);
+    }
 }
