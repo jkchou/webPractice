@@ -4,6 +4,8 @@ package com.shicepku.mybatis;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.shicepku.entity.FarmproductionsCategory;
+import com.shicepku.service.FarmproductionsCategoryService;
 import com.shicepku.service.SchedulingService;
 import com.shicepku.entity.Scheduling;
 import com.shicepku.mapper.SchedulingMapper;
@@ -27,6 +29,8 @@ public class MapperTest {
     @Autowired
     SchedulingService schedulingService;
 
+    @Autowired
+    FarmproductionsCategoryService farmproductionsCategoryService;
     @Test
     void testService() {
         QueryWrapper<Scheduling> wrapper = new QueryWrapper<>();
@@ -92,7 +96,24 @@ public class MapperTest {
             System.out.println(scheduling);
         }
     }
-
+    @Test
+    void deleteById(){
+        int id=1;
+        int res=farmproductionsCategoryService.FarmproductionsCategoryDeleteById(id);
+        System.out.println(res);
+    }
+@Test
+void insertCategory(){
+    FarmproductionsCategory farmproductionsCategory=new FarmproductionsCategory();
+    farmproductionsCategory.setName("我是wzc");
+    farmproductionsCategory.setParentId(3);
+    farmproductionsCategory.setCreateBy("wzc");
+    farmproductionsCategory.setUpdateBy("zxh");
+    farmproductionsCategory.setSort(10);
+    farmproductionsCategory.setStatus(1);
+        int res=farmproductionsCategoryService.FarmproductionsCategoryInsert(farmproductionsCategory);
+    System.out.println(res);
+}
     @Test
     void selectById() {
         log.debug("{}", schedulingMapper.selectById(1));

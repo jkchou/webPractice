@@ -17,4 +17,13 @@ public class FarmproductionsCategoryService {
     public  FarmproductionsCategory FarmproductionsCategorySelectById(int id){
         return ffcMapper.selectById(id);
     }
+    public int FarmproductionsCategoryInsert(FarmproductionsCategory farmproductionsCategory){
+        return ffcMapper.insert(farmproductionsCategory);
+    }
+    public int FarmproductionsCategoryDeleteById(int id){
+        return ffcMapper.deleteById(id);
+    }
+    public int FarmproductionsCategoryUpdate(FarmproductionsCategory farmproductionsCategory){
+        return ffcMapper.updateById(farmproductionsCategory);
+    }
 }
