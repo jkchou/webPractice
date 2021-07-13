@@ -209,7 +209,7 @@
                         <img src="images/zhonglei_03.png" alt="大豆" style="margin-left:10px;"/>
                     </div>
                     <div class="col-xs-4">
-                        <h3 th:text="${category.name}"></h3>
+                        <h3 id="category_name" th:text="${category.name}">123</h3>
                         <p class="intro" th:text="'月产：'+${category.name}+'&nbsp;&nbsp'+'季产：'+${category.name}+'&nbsp;&nbsp'+'年产：'+${category.name}"></p>
                     </div>
                     <div class="col-xs-1 col-xs-offset-4 delete-list">

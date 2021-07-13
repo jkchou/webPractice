@@ -1,14 +1,13 @@
 package com.shicepku.controller;
 
 import com.shicepku.entity.FarmproductionsCategory;
+import com.shicepku.entity.Scheduling;
 import com.shicepku.service.FarmproductionsCategoryService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
@@ -32,10 +31,10 @@ public class FarmproductionsCategoryControl {
         return res;
     }
     @RequestMapping("/selectAll")
-    public Model selectAll(Model model){
+    public ModelAndView selectAll(Model model){
         List<FarmproductionsCategory> farmproductionsCategoryList=fcService.FarmproductionsCategorySelectAll();
         model.addAttribute("List",farmproductionsCategoryList);
-        return model;
+        return new ModelAndView("/category/farmschedulingcategory");
     }
     @RequestMapping("/selectById")
     public FarmproductionsCategory selectById(int id){
@@ -55,5 +54,15 @@ public class FarmproductionsCategoryControl {
         log.debug("{}",name);
         log.debug("{}",yuechan);
         //return 0;
+    }
+    @RequestMapping(value = "/getScheduling",method = RequestMethod.POST)
+    public void getScheduling(Model model,String category){
+//        List<Scheduling> schedulingList=fcService.farmproductionsCategorySelectVariety(category);
+//        model.addAttribute("schedulingList",schedulingList);
+//        return "/category/farmschedulingcategory::scheduling_list";
+        if(category==null)
+            System.out.printf("NULL");
+        else
+        System.out.println(category);
     }
 }
