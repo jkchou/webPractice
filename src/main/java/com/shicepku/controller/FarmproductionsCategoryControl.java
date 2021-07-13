@@ -1,5 +1,6 @@
 package com.shicepku.controller;
 
+import com.alibaba.fastjson.JSON;
 import com.shicepku.entity.FarmproductionsCategory;
 import com.shicepku.entity.Scheduling;
 import com.shicepku.service.FarmproductionsCategoryService;
@@ -20,11 +21,13 @@ public class FarmproductionsCategoryControl {
     @Autowired
     private FarmproductionsCategoryService fcService;
     //类别 月产 季产 年产
-//    @RequestMapping("/update")
-//    public int  update(int id,FarmproductionsCategory farmproductionsCategory){
-//        int res= fcService.FarmproductionsCategoryUpdate(farmproductionsCategory);
-//        return res;
-//    }
+    @RequestMapping("/updateCategory")
+    public void update(@ModelAttribute FarmproductionsCategory farmproductionsCategory){
+        System.out.println("进入update方法");
+        System.out.println(farmproductionsCategory.getName());
+        System.out.println(farmproductionsCategory.getCreateBy());
+        System.out.println(farmproductionsCategory.getYlut());
+    }
     @RequestMapping("/delectById")
     public  int delectById(int id){
         int res= fcService.FarmproductionsCategoryDeleteById(id);
@@ -34,6 +37,7 @@ public class FarmproductionsCategoryControl {
     public ModelAndView selectAll(Model model){
         List<FarmproductionsCategory> farmproductionsCategoryList=fcService.FarmproductionsCategorySelectAll();
         model.addAttribute("List",farmproductionsCategoryList);
+        model.addAttribute("FarmproductionsCategory",new FarmproductionsCategory());
         return new ModelAndView("/category/farmschedulingcategory");
     }
     @RequestMapping("/selectById")
@@ -56,13 +60,14 @@ public class FarmproductionsCategoryControl {
         //return 0;
     }
     @RequestMapping(value = "/getScheduling",method = RequestMethod.POST)
-    public void getScheduling(Model model,String category){
+    @ResponseBody
+    public List<Scheduling> getScheduling(Model model, String category){
 //        List<Scheduling> schedulingList=fcService.farmproductionsCategorySelectVariety(category);
 //        model.addAttribute("schedulingList",schedulingList);
 //        return "/category/farmschedulingcategory::scheduling_list";
-        if(category==null)
-            System.out.printf("NULL");
-        else
-        System.out.println(category);
+        List<Scheduling> schedulingList=fcService.farmproductionsCategorySelectVariety(category);
+        model.addAttribute("categorylist", schedulingList);
+       // return "/category/farmschedulingcategory::categorylist";
+        return schedulingList;
     }
 }

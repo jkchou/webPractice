@@ -121,25 +121,26 @@ function changeFeedback(id) {
 }
 
 //伸缩二级菜单 资源-设备管理
-function changezhonglei(id) {
+function changezhonglei(id, category_id) {
     var str = document.getElementById(id).className;
     var tag = str.substring(20, str.length);
-    var category_name=$("#category_name").text();
-    console.log(category_name);
+    var category_name = document.getElementById(category_id).innerText;
+    // console.log(id)
+    // console.log(category_id)
+    // console.log(category_name)
     if (tag == "chevron-down") {
         document.getElementById(id).className = "glyphicon glyphicon-chevron-up";
         $.ajax({
-            url:"/FarmSchedulingCategory/getScheduling",
-            method:"post",
-            dataType: "json",
-            data:{
-                "category":category_name
+            url: "/FarmSchedulingCategory/getScheduling",
+            method: "post",
+            data: {
+                "category": category_name
             },
-
-            success: function(data){
-                console.log(category_name);
+            success: function (data) {
+                $(".scheduling_list").html(data);
+                console.log(data);
             },
-            error:function(err) {
+            error: function (err) {
                 console.log(err.statusText);
                 console.log('异常');
             }
