@@ -2,14 +2,19 @@ package com.shicepku.controller;
 
 import com.shicepku.entity.FarmproductionsCategory;
 import com.shicepku.service.FarmproductionsCategoryService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
+
+@Slf4j
 @Controller
 @RequestMapping("/FarmSchedulingCategory")
 public class FarmproductionsCategoryControl {
@@ -41,5 +46,14 @@ public class FarmproductionsCategoryControl {
     public int insertCategory(FarmproductionsCategory farmproductionsCategory){
         int res= fcService.FarmproductionsCategoryInsert(farmproductionsCategory);
         return res;
+    }
+
+    //zxh
+    @RequestMapping("/update")
+    public void update(@RequestParam(name = "leibie") String name,
+                      @RequestParam(name = "yuechan") String yuechan){
+        log.debug("{}",name);
+        log.debug("{}",yuechan);
+        //return 0;
     }
 }
