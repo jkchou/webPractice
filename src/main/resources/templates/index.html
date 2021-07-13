@@ -3,11 +3,14 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title>test</title>
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
 </head>
 <body>
-<form method="post" action="/users/select">
-    id:<input name="id"><br>
-    <button>submit</button>
-</form>
+<div>
+    <form method="post" action="/api/scheduling/image" enctype="multipart/form-data">
+        <input type="file" name="file">
+        <input type="submit">
+    </form>
+</div>
 </body>
 </html>

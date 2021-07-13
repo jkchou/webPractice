@@ -5,7 +5,6 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.shicepku.entity.FarmproductionsCategory;
-import com.shicepku.mapper.FarmproductionsCategoryMapper;
 import com.shicepku.service.FarmproductionsCategoryService;
 import com.shicepku.service.SchedulingService;
 import com.shicepku.entity.Scheduling;
@@ -29,9 +28,6 @@ public class MapperTest {
 
     @Autowired
     SchedulingService schedulingService;
-
-    @Autowired
-    FarmproductionsCategoryMapper farmproductionsCategoryMapper;
 
     @Autowired
     FarmproductionsCategoryService farmproductionsCategoryService;
@@ -61,8 +57,8 @@ public class MapperTest {
         scheduling.setOfficeId(1);
         scheduling.setPlotId(1);
         scheduling.setGreenHouseId(1);
-        scheduling.setFarmProductionsCategoryId("我是wzc");
-        scheduling.setFarmProductionsVarietyId("sb");
+        scheduling.setFarmProductionsCategoryId("大豆类");
+        scheduling.setFarmProductionsVarietyId("大豆");
         scheduling.setRemarks("test");
         scheduling.setCreateBy(1);
         //scheduling.setUpdateBy(1);
@@ -121,17 +117,6 @@ void insertCategory(){
     @Test
     void selectById() {
         log.debug("{}", schedulingMapper.selectById(1));
-    }
-
-
-    @Test
-    void selectVariety(){
-        //farmproductionsCategoryMapper.
-        List<Scheduling> schedulingList = farmproductionsCategoryService.farmproductionsCategorySelectVariety("我是wzc");
-        for (int i = 0; i < schedulingList.size(); i++) {
-            Scheduling scheduling =  schedulingList.get(i);
-            System.out.println(scheduling);
-        }
     }
 
 }

@@ -7,10 +7,15 @@ import com.shicepku.DTO.ResultDTO;
 import com.shicepku.entity.Scheduling;
 import com.shicepku.mapper.SchedulingMapper;
 import com.shicepku.service.SchedulingService;
+import com.shicepku.utils.ImageUpload;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.ClassUtils;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.Date;
 import java.util.Map;
 
@@ -22,7 +27,13 @@ public class SchedulingController {
     SchedulingMapper schedulingMapper;
     @Autowired
     SchedulingService schedulingService;
+    @Autowired
+    ImageUpload imageUpload;
 
+    @PostMapping("/image")
+    public String image(MultipartFile file){
+        return imageUpload.saveImage(file);
+    }
 
     @PostMapping("/selectById")
     public Scheduling selectById(Integer id) {

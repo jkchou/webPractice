@@ -13,6 +13,10 @@ spring:
     view:
       suffix: .html
       prefix: classpath:/templates/
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 100MB
 
 server:
   port: 8888
