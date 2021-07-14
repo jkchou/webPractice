@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="zh-CN" xmlns="http://www.w3.org/1999/html">
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -340,16 +341,22 @@
                     <!--                                    <p class="intro">月产：300公斤&nbsp;&nbsp;季产：880公斤&nbsp;&nbsp; 年产：2700公斤</p>-->
                     <!--                                </div>-->
                     <!--                            </div>-->
-                    <!--                            <div class="col-xs-5 nongjiguanli_emptybox">-->
-                    <!--                                <div class="row">-->
-                    <!--                                    <div class="col-xs-1 col-xs-offset-4">-->
-                    <!--                                        <a href="#"  aria-hidden="true" data-toggle="modal" data-target="#tianjiazhonglei" type="button" ><span class="glyphicon glyphicon-plus-sign"></span></a>-->
-                    <!--                                    </div>-->
-                    <!--                                    <div class="col-xs-6">-->
-                    <!--                                        <h4>添加品种</h4>-->
-                    <!--                                    </div>-->
-                    <!--                                </div>-->
-                    <!--                            </div>-->
+<!--                                                <div class="col-xs-5 nongjiguanli_emptybox">-->
+<!--                                                    <div class="row">-->
+<!--                                                        <div class="col-xs-1 col-xs-offset-4">-->
+<!--                                                            <a href="#"  onclick="getCurrent()" data-toggle="modal" data-target="#tianjiazhonglei" type="button" ><span class="glyphicon glyphicon-plus-sign"></span></a>-->
+<!--                                                        </div>-->
+<!--                                                        <script type="javascript">-->
+<!--                                                            function getCurrent(){-->
+<!--                                                                var CurrentCategory=$(this).parent()-->
+<!--                                                                console.log(CurrentCategory);-->
+<!--                                                            }-->
+<!--                                                        </script>-->
+<!--                                                        <div class="col-xs-6">-->
+<!--                                                            <h4>添加品种</h4>-->
+<!--                                                        </div>-->
+<!--                                                    </div>-->
+<!--                                                </div>-->
                     <!--                        </div>-->
                     <!--                    </div>-->
                     <!--                </div>-->
@@ -380,7 +387,7 @@
 <!--                                        </div>-->
 <!--                                    </div>-->
 <!--                                </form>-->
-                                <form th:action="@{/FarmSchedulingCategory/updateCategory}" th:object="${FarmproductionsCategory}" method="post" class="form-inline" role="form">
+                                <form th:action="@{/FarmSchedulingCategory/insertVariety}" th:object="${Variety}" method="post" class="form-inline" role="form">
                                                                         <div class="form-group">
                                                                             <div class="col-xs-1 col-xs-offset-1 control-label">
                                                                                 <div id="add_zhonglei">
@@ -396,33 +403,34 @@
                                                                         </div>
                                     <div class="form-group">
                                         <label for="mingcheng" class="control-label">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名称</label>
-                                        <input type="text" class="form-control" id="mingcheng" placeholder="" th:field="*{name}">
+                                        <input type="text" class="form-control" id="mingcheng" placeholder="CHAR" th:field="*{name}">
                                     </div>
+                                    <input type="hidden" id="currentCategory" th:field="*{category}">
                                     <div class="form-group" style=" margin-left:10px;">
                                         <label class="control-label">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;亩产</label>
-                                        <input type="text" class="form-control" id="muchan" placeholder="" th:field="*{ylut}">
+                                        <input type="text" class="form-control" id="muchan" placeholder="DOUBLE" th:field="*{ylut}">
                                     </div>
 
                                     <div class="form-group" style="margin-top:5px;;">
                                         <label class="control-label">所属地块</label>
-                                        <input type="text" class="form-control" id="suoshidikuai" placeholder="" th:field="*{createBy}">
+                                        <input type="text" class="form-control" id="suoshidikuai" placeholder="INT" th:field="*{plot}">
                                     </div>
                                     <div class="form-group" style="margin-top:5px; margin-left:10px">
                                         <label class="control-label">生长周期</label>
-                                        <input type="text" class="form-control" id="shengzhangzhouqi" placeholder="">
+                                        <input type="text" class="form-control" id="shengzhangzhouqi" placeholder="INT" th:field="*{growthCycle}">
                                     </div>
 
                                     <div class="form-group" style="margin-top:5px;">
                                         <label class="control-label">种植月份</label>
-                                        <input type="date" class="form-control" id="zhongzhiyuefen" placeholder="">
+                                        <input type="date" class="form-control" id="zhongzhiyuefen" placeholder="" th:field="*{plantingIn}">
                                     </div>
                                     <div class="form-group" style="margin-top:5px; margin-left:10px;">
                                         <label class="control-label">&nbsp;成熟月份</label>
-                                        <input type="date" class="form-control" id="chengshuyuefen" placeholder="">
+                                        <input type="date" class="form-control" id="chengshuyuefen" placeholder="" th:field="*{matureIn}">
                                     </div>
                                     <div class="form-group" style="margin-top:5px;">
                                         <label class="control-label">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;描述</label>
-                                        <textarea class="form-control"></textarea>
+                                        <textarea class="form-control" placeholder="CHAR" th:field="*{remarks}"></textarea>
                                     </div>
                                     <div class="modal-footer">
                                         <input class="btn btn-success" type="submit" value="提交">

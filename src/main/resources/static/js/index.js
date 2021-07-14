@@ -172,11 +172,12 @@ function changezhonglei(id, category_id,divId) {
             },
             // contentType:"application/x-www-form-urlencoded;charset=UTF-8",
             success: function (data) {
-                console.log(typeof data);
+                console.log(category_name);
+                $("#currentCategory").val(category_name);
                 data += "<div class=\"col-xs-5 nongjiguanli_emptybox\">\n" +
                     "                                    <div class=\"row\">\n" +
                     "                                        <div class=\"col-xs-1 col-xs-offset-4\">\n" +
-                    "                                            <a href=\"#\" aria-hidden=\"true\" data-toggle=\"modal\"\n" +
+                    "                                            <a href=\"#\"aria-hidden=\"true\" data-toggle=\"modal\"\n" +
                     "                                               data-target=\"#tianjiazhonglei\" type=\"button\"><span\n" +
                     "                                                    class=\"glyphicon glyphicon-plus-sign\"></span></a>\n" +
                     "                                        </div>\n" +
@@ -185,7 +186,7 @@ function changezhonglei(id, category_id,divId) {
                     "                                        </div>\n" +
                     "                                    </div>\n" +
                     "                                </div>" +
-                    "<script>" +
+                    "<script>"+
                     "$(\".delete-nj\").click(function () {\n" +
                     "        var variety_name=$(this).parent().parent().children(\".mingcheng\").children(\"h4\").text();\n" +
                     "        console.log(variety_name);\n" +

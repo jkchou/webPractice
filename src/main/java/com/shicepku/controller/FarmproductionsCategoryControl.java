@@ -1,9 +1,9 @@
 package com.shicepku.controller;
 
-import com.alibaba.fastjson.JSON;
 import com.shicepku.entity.FarmproductionsCategory;
 import com.shicepku.entity.Variety;
 import com.shicepku.service.FarmproductionsCategoryService;
+import com.shicepku.service.VarietyService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,12 +20,19 @@ import java.util.List;
 public class FarmproductionsCategoryControl {
     @Autowired
     private FarmproductionsCategoryService fcService;
-    @RequestMapping("/updateCategory")
-    public void update(@ModelAttribute FarmproductionsCategory farmproductionsCategory){
-        System.out.println("进入update方法");
-        System.out.println(farmproductionsCategory.getName());
-        System.out.println(farmproductionsCategory.getCreateBy());
-        System.out.println(farmproductionsCategory.getYlut());
+    private VarietyService vrService;
+    @RequestMapping("/insertVariety")
+    public String insert(@ModelAttribute Variety Variety){
+        System.out.println("进入insert方法");
+                System.out.println(Variety.toString());
+        int res=vrService.insert(Variety);
+//        System.out.println(Variety.getName());
+//        System.out.println(Variety.getGrowthCycle());
+//        System.out.println(Variety.getYlut());
+//        System.out.println(Variety.getMatureIn());
+//        System.out.println(Variety.getRemarks());
+//        System.out.println(Variety.getCategory());
+        return "redirect:/FarmSchedulingCategory/selectAll";
     }
     @RequestMapping("/delectById")
     public  int delectById(int id){
@@ -36,7 +43,7 @@ public class FarmproductionsCategoryControl {
     public ModelAndView selectAll(Model model){
         List<FarmproductionsCategory> farmproductionsCategoryList=fcService.FarmproductionsCategorySelectAll();
         model.addAttribute("List",farmproductionsCategoryList);
-        model.addAttribute("FarmproductionsCategory",new FarmproductionsCategory());
+        model.addAttribute("Variety",new Variety());
         return new ModelAndView("/category/farmschedulingcategory");
     }
     @RequestMapping("/selectById")
@@ -51,13 +58,13 @@ public class FarmproductionsCategoryControl {
     }
 
     //zxh
-    @RequestMapping("/update")
-    public void update(@RequestParam(name = "leibie") String name,
-                      @RequestParam(name = "yuechan") String yuechan){
-        log.debug("{}",name);
-        log.debug("{}",yuechan);
-        //return 0;
-    }
+//    @RequestMapping("/update")
+//    public void update(@RequestParam(name = "leibie") String name,
+//                      @RequestParam(name = "yuechan") String yuechan){
+//        log.debug("{}",name);
+//        log.debug("{}",yuechan);
+//        //return 0;
+//    }
     @RequestMapping(value = "/getScheduling",method = RequestMethod.POST)
 //    @ResponseBody
     public String getScheduling(Model model, String category){
@@ -79,12 +86,14 @@ public class FarmproductionsCategoryControl {
         System.out.println(res);
         return "redirect:/FarmSchedulingCategory/selectAll";
     }
-    @RequestMapping(value = "/searchCategory",method=RequestMethod.POST)
-    public void searchCategory(Model model,@RequestParam(value = "categoryName") String category_name) {
-//        List<FarmproductionsCategory> farmproductionsCategoryList=fcService.FarmproductionsCategorySearch(categoryName);
+    @RequestMapping( "/searchCategory")
+    public ModelAndView searchCategory(Model model,@RequestParam(value = "categoryName") String category_name) {
+        List<FarmproductionsCategory> farmproductionsCategoryList=fcService.FarmproductionsCategorySearch(category_name);
         System.out.println(category_name);
 //        System.out.println(farmproductionsCategoryList.toString());
-//        model.addAttribute("List",farmproductionsCategoryList);
+        model.addAttribute("List",farmproductionsCategoryList);
+        model.addAttribute("Variety",new Variety());
+        return new ModelAndView("/category/farmschedulingcategory");
 //        return new ModelAndView("/category/farmschedulingcategory");
     }
 }
