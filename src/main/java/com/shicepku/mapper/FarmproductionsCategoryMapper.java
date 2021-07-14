@@ -12,4 +12,5 @@ import java.util.List;
 @Mapper
 public interface FarmproductionsCategoryMapper extends BaseMapper<FarmproductionsCategory> {
 //    List<FarmproductionsCategory>
+    int deleteByName(String name);
 }

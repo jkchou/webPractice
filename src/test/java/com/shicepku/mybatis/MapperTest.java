@@ -6,6 +6,7 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.shicepku.entity.FarmproductionsCategory;
 import com.shicepku.entity.Variety;
+import com.shicepku.mapper.FarmproductionsCategoryMapper;
 import com.shicepku.mapper.VarietyMapper;
 import com.shicepku.service.FarmproductionsCategoryService;
 import com.shicepku.service.SchedulingService;
@@ -126,22 +127,35 @@ void insertCategory(){
 
     @Autowired
     VarietyService varietyService;
+    @Autowired
+    VarietyMapper varietyMapper;
+    @Autowired
+    FarmproductionsCategoryMapper farmproductionsCategoryMapper;
 
     @Test
     void testVariety(){
         Variety variety = new Variety();
-        variety.setId(6);
-        variety.setName("hh");
-        variety.setCategory("我是zxh");
-        variety.setPlot(1);
-        variety.setYlut(10.0);
-        variety.setGrowthCycle(6);
-        Date date = new Date(System.currentTimeMillis());
-        log.debug("date ---> {}",date);
-        variety.setPlantingIn(date);
-        variety.setMatureIn(date);
-        int i = varietyService.updateById(variety);
-        System.out.println(i);
+        variety.setDelFlag(1);
+        FarmproductionsCategory farmproductionsCategory = new FarmproductionsCategory();
+        farmproductionsCategory.setDelFlag(1);
+        Scheduling scheduling = new Scheduling();
+        scheduling.setDelFlag(1);
+       QueryWrapper<FarmproductionsCategory> CategoryQueryWrapper = new QueryWrapper<>();
+       QueryWrapper<Variety> varietyQueryWrapper = new QueryWrapper<>();
+       QueryWrapper<Scheduling> scQueryWrapper = new QueryWrapper<>();
+       CategoryQueryWrapper.eq("del_flag",0);
+       varietyQueryWrapper.eq("del_flag",0);
+       scQueryWrapper.eq("del_flag",0);
+       varietyMapper.update(variety,varietyQueryWrapper);
+       farmproductionsCategoryMapper.update(farmproductionsCategory,CategoryQueryWrapper);
+       schedulingMapper.update(scheduling,scQueryWrapper);
+    }
+
+    @Test
+    void testdelete(){
+        //farmproductionsCategoryService.deleteByCategoryName("大豆类");
+        farmproductionsCategoryService.deleteByVarietyName("大豆");
+
     }
 
 }

@@ -41,9 +41,12 @@ public class FarmproductionsCategoryService {
 
     //删除Category
     public int deleteByCategoryName(String name){
-        return 1;
+        return ffcMapper.deleteByName(name);
     }
 
     //删除Variety
 
+    public  int deleteByVarietyName(String name){
+        return varietyMapper.deleteByName(name);
+    }
 }

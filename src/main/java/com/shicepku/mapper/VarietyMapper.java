@@ -6,4 +6,5 @@ import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
 public interface VarietyMapper extends BaseMapper<Variety> {
+    int deleteByName(String name);
 }
