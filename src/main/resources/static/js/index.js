@@ -41,11 +41,17 @@ $(function () {   //鼠标点击左侧nav 更换背景图片
         }
     });
     //点击删除种类
-    $(".delete-zhonglei").click(function () {
+    //删除二级列表
+    //传入二级列表id，返回刷新
+    $(".delete-zhonglei").click(function (category_name) {
+        // console.log(category_name);
+        console.log($(this).parent().parent().parent().children[1].text());
+        console.log($(this).parent().parent().parent().children[0].text());
         var conf = confirm('确定删除吗？');
         if (conf) {
             $(this).parent().parent().parent().parent().addClass('brick').one('webkitAnimationEnd oanimationend msAnimationEnd animationend', function (e) {
                 $(this).remove();
+
             });
         }
     });
@@ -121,7 +127,7 @@ function changeFeedback(id) {
 }
 
 //伸缩二级菜单 资源-设备管理
-function changezhonglei(id, category_id) {
+function changezhonglei(id, category_id,divId) {
     var str = document.getElementById(id).className;
     var tag = str.substring(20, str.length);
     var category_name = document.getElementById(category_id).innerText;
@@ -129,16 +135,33 @@ function changezhonglei(id, category_id) {
     // console.log(category_id)
     // console.log(category_name)
     if (tag == "chevron-down") {
-        document.getElementById(id).className = "glyphicon glyphicon-chevron-up";
         $.ajax({
+            async:false,
             url: "/FarmSchedulingCategory/getScheduling",
             method: "post",
             data: {
                 "category": category_name
             },
+            // contentType:"application/x-www-form-urlencoded;charset=UTF-8",
             success: function (data) {
-                $(".scheduling_list").html(data);
-                console.log(data);
+                console.log(typeof data);
+                data += "<div class=\"col-xs-5 nongjiguanli_emptybox\">\n" +
+                    "                                    <div class=\"row\">\n" +
+                    "                                        <div class=\"col-xs-1 col-xs-offset-4\">\n" +
+                    "                                            <a href=\"#\" aria-hidden=\"true\" data-toggle=\"modal\"\n" +
+                    "                                               data-target=\"#tianjiazhonglei\" type=\"button\"><span\n" +
+                    "                                                    class=\"glyphicon glyphicon-plus-sign\"></span></a>\n" +
+                    "                                        </div>\n" +
+                    "                                        <div class=\"col-xs-6\">\n" +
+                    "                                            <h4>添加品种</h4>\n" +
+                    "                                        </div>\n" +
+                    "                                    </div>\n" +
+                    "                                </div>"
+                $(`#${divId}`).html(data);
+                setTimeout(function (){
+                    console.log(2);
+                    document.getElementById(id).className = "glyphicon glyphicon-chevron-up";
+                },200)
             },
             error: function (err) {
                 console.log(err.statusText);

@@ -60,14 +60,14 @@ public class FarmproductionsCategoryControl {
         //return 0;
     }
     @RequestMapping(value = "/getScheduling",method = RequestMethod.POST)
-    @ResponseBody
-    public List<Scheduling> getScheduling(Model model, String category){
+//    @ResponseBody
+    public String getScheduling(Model model, String category){
 //        List<Scheduling> schedulingList=fcService.farmproductionsCategorySelectVariety(category);
 //        model.addAttribute("schedulingList",schedulingList);
 //        return "/category/farmschedulingcategory::scheduling_list";
         List<Scheduling> schedulingList=fcService.farmproductionsCategorySelectVariety(category);
-        model.addAttribute("categorylist", schedulingList);
-       // return "/category/farmschedulingcategory::categorylist";
-        return schedulingList;
+        model.addAttribute("categorylists", schedulingList);
+        return "/category/farmschedulingcategory::category_list";
+//        return schedulingList;
     }
 }
