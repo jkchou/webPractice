@@ -65,9 +65,9 @@ public class FarmproductionsCategoryControl {
 //        List<Scheduling> schedulingList=fcService.farmproductionsCategorySelectVariety(category);
 //        model.addAttribute("schedulingList",schedulingList);
 //        return "/category/farmschedulingcategory::scheduling_list";
-        List<Scheduling> schedulingList=fcService.farmproductionsCategorySelectVariety(category);
-        model.addAttribute("categorylists", schedulingList);
-        return "/category/farmschedulingcategory::category_list";
+        List<Variety> schedulingList=fcService.farmproductionsCategorySelectVariety(category);
+        model.addAttribute("categorylist", varietyList);
+       return "/category/farmschedulingcategory::category_list";
 //        return schedulingList;
     }
 }

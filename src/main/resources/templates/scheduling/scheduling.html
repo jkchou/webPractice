@@ -107,7 +107,7 @@
                         </a>
                         <div id="collapseOne1" class="panel-collapse collapse">
                             <ul class="nav  nav-list">
-                                <li><a href="计划-种类.html">种 类</a></li>
+                                <li><a href="/FarmSchedulingCategory/selectAll#">种 类</a></li>
                                 <li><a href="scheduling.html">排 产</a></li>
                             </ul>
                         </div>
@@ -208,7 +208,7 @@
                                     <option>水果类</option>
                                 </select>
                             </div>
-                            <div class="col-xs-3">
+                            <!--<div class="col-xs-3">
                                 <div class="input-group">
                                     <input type="date" class="form-control" id="exampleInputEmail1" value="2016-01-01"/>
                                     <i class="glyphicon glyphicon-th form-control-feedback dateicon"></i>
@@ -219,7 +219,7 @@
                                     <input type="date" class="form-control" id="exampleInputEmail2" value="2016-12-31"/>
                                     <i class="glyphicon glyphicon-th form-control-feedback dateicon"></i>
                                 </div>
-                            </div>
+                            </div>-->
                             <div class="col-xs-2 col-xs-offset-1">
                                 <a href="add.html" type="button" class="btn btn-success">&nbsp;添&nbsp;加&nbsp;</a>
                             </div>
@@ -314,14 +314,13 @@
                     break;
             }
         } else currentPage = page;
-        console.log("currentPage " + currentPage);
         selectPage();
     }
 
     function selectPage() {
         var id = 0;
         var categoryId = document.getElementById("category").value;
-        console.log("1");
+        console.log(categoryId);
         var formData = new FormData;
         formData.append("categoryId", categoryId);
         formData.append("current", currentPage);
@@ -331,7 +330,6 @@
         }).then(respond => {
             if (respond.data.records.length !== 0) {
                 schedulings = respond.data.records;
-                console.log("2")
             } else schedulings = null;
             pages = respond.data.pages;
             total = respond.data.total;
@@ -341,17 +339,14 @@
             $("#currentPage").text("第" + currentPage + "页")
             $("#totalPages").text("共" + pages + "页")
             changeTable();
-        }, 300);
+        }, 700);
     }
 
     function changeTable() {
-        console.log("3")
         if (schedulings === null) {
-            console.log("4")
             var str = "<tr></tr>";
             $("#table").html(str);
         } else {
-            console.log("4")
             var str = "";
             var num = 0;
             for (let i in schedulings) {
@@ -375,7 +370,7 @@
     }
 
     function deleteByid(id) {
-        var ifDel = confirm(id + typeof id)
+        var ifDel = confirm("确定删除?")
         if (ifDel) {
             var formData = new FormData;
             formData.append("id", id);

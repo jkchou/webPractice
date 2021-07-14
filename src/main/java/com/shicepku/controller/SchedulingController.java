@@ -4,9 +4,13 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.shicepku.DTO.ResultDTO;
+import com.shicepku.entity.FarmproductionsCategory;
 import com.shicepku.entity.Scheduling;
+import com.shicepku.entity.Variety;
 import com.shicepku.mapper.SchedulingMapper;
+import com.shicepku.service.FarmproductionsCategoryService;
 import com.shicepku.service.SchedulingService;
+import com.shicepku.service.VarietyService;
 import com.shicepku.utils.ImageUpload;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +21,8 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.File;
 import java.io.IOException;
 import java.util.Date;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 
 @Slf4j
@@ -27,6 +33,8 @@ public class SchedulingController {
     SchedulingMapper schedulingMapper;
     @Autowired
     SchedulingService schedulingService;
+    @Autowired
+    FarmproductionsCategoryService farmproductionsCategoryService;
     @Autowired
     ImageUpload imageUpload;
 
@@ -46,7 +54,7 @@ public class SchedulingController {
         QueryWrapper<Scheduling> schedulingQueryWrapper = new QueryWrapper<>();
         schedulingQueryWrapper.eq("del_flag", 1);
         if (!categoryId.equals("全部"))
-            schedulingQueryWrapper.eq("farmProductionsCategoryId", categoryId);
+            schedulingQueryWrapper.eq("farm_productions_category_id", categoryId);
         Page<Scheduling> page = new Page<>(current, size);
         IPage<Scheduling> schedulingIPage = schedulingService.selectPageVo(page, schedulingQueryWrapper);
         long total = schedulingIPage.getTotal();
@@ -66,6 +74,32 @@ public class SchedulingController {
     @PostMapping("/delete")
     public int delete(@RequestParam("id") int id) {
         return schedulingMapper.deleteById(id);
+    }
+
+
+    @RequestMapping("/getCategory")
+    public List<String> getCategory() {
+        List<FarmproductionsCategory> farmproductionsCategoryList =  farmproductionsCategoryService.FarmproductionsCategorySelectAll();
+        List<String> categorys = new LinkedList<>();
+        for (int i = 0; i < farmproductionsCategoryList.size(); i++) {
+            FarmproductionsCategory farmproductionsCategory =  farmproductionsCategoryList.get(i);
+            categorys.add(farmproductionsCategory.getName());
+        }
+        return categorys;
+    }
+
+    @Autowired
+    VarietyService varietyService;
+
+    @RequestMapping("/getVariety")
+    public List<String> getVariety() {
+        List<Variety> varietyList =  varietyService.selectAll();
+        List<String> varietys = new LinkedList<>();
+        for (int i = 0; i < varietyList.size(); i++) {
+            Variety  variety =  varietyList.get(i);
+            varietys.add(variety.getName());
+        }
+        return varietys;
     }
 
     @RequestMapping("/")
