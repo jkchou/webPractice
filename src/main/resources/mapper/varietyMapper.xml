@@ -12,6 +12,6 @@
             v.del_flag = 0,
             s.del_flag = 0
         where v.name = #{name}
-          AND s.farm_productions_variety_id = #{name}
+          or s.farm_productions_variety_id = #{name}
     </delete>
 </mapper>

@@ -293,10 +293,27 @@
         updateDate: null,
     };
     var schedulings = [];
+    var category = [];
 
+
+    function getCategory() {
+        axios.post('/api/scheduling/getCategory')
+            .then(respond => {
+                if (respond.status === 200) {
+                    console.log(respond.data)
+                    category = respond.data;
+                    var str = "<option>全部</option>";
+                    for (let i in category) {
+                        str += "<option>" + category[i] + "</option>";
+                    }
+                    $("#category").html(str);
+                }
+            });
+    }
 
     window.onload = function () {
         selectPage();
+        getCategory()
     }
 
     function showValue(obj) {
