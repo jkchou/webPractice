@@ -4,13 +4,30 @@
     <meta charset="UTF-8">
     <title>test</title>
     <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </head>
 <body>
 <div>
-    <form method="post" action="/api/scheduling/image" enctype="multipart/form-data">
-        <input type="file" name="file">
-        <input type="submit">
-    </form>
+    <input type="file" name="file" id="saveImage">
+    <button onclick="upload()">提交</button>
+    <img id="image" src="">
 </div>
+<script>
+    function upload(e) {
+        let file = document.getElementById('saveImage').files[0];
+        var formData = new FormData;
+        formData.append("file", file);
+        axios.post('/api/scheduling/image',formData,{
+            headers: {"Content-Type": "multipart/form-data"}
+        })
+            .then(respond => {
+                if (respond.status === 200) {
+                    console.log(respond.data)
+                    var src = "http://127.0.0.1:8888/static/" + respond.data;
+                    $("#image").attr("src",src);
+                }
+            });
+    }
+</script>
 </body>
 </html>
