@@ -6,9 +6,11 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.shicepku.DTO.ResultDTO;
 import com.shicepku.entity.FarmproductionsCategory;
 import com.shicepku.entity.Scheduling;
+import com.shicepku.entity.Variety;
 import com.shicepku.mapper.SchedulingMapper;
 import com.shicepku.service.FarmproductionsCategoryService;
 import com.shicepku.service.SchedulingService;
+import com.shicepku.service.VarietyService;
 import com.shicepku.utils.ImageUpload;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -84,6 +86,20 @@ public class SchedulingController {
             categorys.add(farmproductionsCategory.getName());
         }
         return categorys;
+    }
+
+    @Autowired
+    VarietyService varietyService;
+
+    @RequestMapping("/getVariety")
+    public List<String> getVariety() {
+        List<Variety> varietyList =  varietyService.selectAll();
+        List<String> varietys = new LinkedList<>();
+        for (int i = 0; i < varietyList.size(); i++) {
+            Variety  variety =  varietyList.get(i);
+            varietys.add(variety.getName());
+        }
+        return varietys;
     }
 
     @RequestMapping("/")

@@ -107,7 +107,7 @@
                         </a>
                         <div id="collapseOne1" class="panel-collapse collapse">
                             <ul class="nav  nav-list">
-                                <li><a href="../category/farmschedulingcategory.html">种 类</a></li>
+                                <li><a href="/FarmSchedulingCategory/selectAll#">种 类</a></li>
                                 <li><a href="scheduling.html">排 产</a></li>
                             </ul>
                         </div>
@@ -230,7 +230,8 @@
                             </div>
                             <p class="col-xs-1 col-xs-offset-1 control-label">种植品种</p>
                             <div class="col-xs-3">
-                                <input type="text" class="form-control" value="" id="variety"/>
+                                <select class="form-control" id="variety">
+                                </select>
                             </div>
                         </div>
                         <div class="form-group">
@@ -287,6 +288,7 @@
     function goBack() {
         window.location.href = "scheduling.html";
     }
+
     var scheduling = {
         delFlag: null,
         farmProductionsCategoryId: null,
@@ -306,11 +308,11 @@
         updateDate: null,
     };
     var category = [];
+    var variety = [];
 
-    window.onload = function (){
+    window.onload = function () {
         getCategory()
     }
-
 
 
     function insert() {
@@ -332,24 +334,37 @@
                     category = respond.data;
                     var str = "";
                     for (let i in category) {
-                        str += "<option>"+category[i]+"</option>";
+                        str += "<option>" + category[i] + "</option>";
                     }
                     $("#category").html(str);
+                }
+            });
+        axios.post('/api/scheduling/getVariety')
+            .then(respond => {
+                if (respond.status === 200) {
+                    console.log(respond.data)
+                    variety = respond.data;
+                    var str = "";
+                    for (let i in variety) {
+                        str += "<option>"+variety[i]+"</option>";
+                    }
+                    $("#variety").html(str);
                 }
             });
     }
 
 
-
     function newSche() {
         var flag = 1;
+
         function validate(value) {
             var reg = /^[+]{0,1}(\d+)$|^[+]{0,1}(\d+\.\d+)$/;
-            if(!reg.test(value)){
-                alert(value+"格式不正确,请输入数字")
+            if (!reg.test(value)) {
+                alert(value + "格式不正确,请输入数字")
                 flag = 0;
             }
         }
+
         //地块
         var value = $("#plotId option:selected").text();
         scheduling.plotId = parseInt(value.replace(/[^\d]/g, ' '));
@@ -360,7 +375,7 @@
         value = $("#category option:selected").text();
         scheduling.farmProductionsCategoryId = value;
         //品种
-        value = $("#variety").val();
+        value = $("#variety option:selected").text();
         scheduling.farmProductionsVarietyId = value;
         //茬
         value = $("#name").val();
@@ -378,7 +393,7 @@
         validate(value);
         scheduling.plantArea = parseInt(value);
 
-        if(flag === 1){
+        if (flag === 1) {
             insert()
         }
     }

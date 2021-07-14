@@ -3,8 +3,10 @@ package com.shicepku.service;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.shicepku.entity.FarmproductionsCategory;
 import com.shicepku.entity.Scheduling;
+import com.shicepku.entity.Variety;
 import com.shicepku.mapper.FarmproductionsCategoryMapper;
 import com.shicepku.mapper.SchedulingMapper;
+import com.shicepku.mapper.VarietyMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,7 +15,7 @@ import java.util.List;
 @Service
 public class FarmproductionsCategoryService {
     @Autowired
-    private SchedulingMapper schedulingMapper;
+    private VarietyMapper varietyMapper;
     @Autowired
     private FarmproductionsCategoryMapper ffcMapper;
     public List<FarmproductionsCategory> FarmproductionsCategorySelectAll(){
@@ -31,9 +33,10 @@ public class FarmproductionsCategoryService {
     public int FarmproductionsCategoryUpdate(FarmproductionsCategory farmproductionsCategory){
         return ffcMapper.updateById(farmproductionsCategory);
     }
-    public List<Scheduling> farmproductionsCategorySelectVariety(String category){
-        QueryWrapper<Scheduling> wrapper = new QueryWrapper<>();
-        wrapper.eq("farm_productions_category_id",category);
-        return schedulingMapper.selectList(wrapper);
+    public List<Variety> farmproductionsCategorySelectVariety(String category){
+        QueryWrapper<Variety> wrapper = new QueryWrapper<>();
+        wrapper.eq("category",category);
+        return varietyMapper.selectList(wrapper);
     }
+
 }

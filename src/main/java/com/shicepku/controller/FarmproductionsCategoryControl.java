@@ -3,6 +3,7 @@ package com.shicepku.controller;
 import com.alibaba.fastjson.JSON;
 import com.shicepku.entity.FarmproductionsCategory;
 import com.shicepku.entity.Scheduling;
+import com.shicepku.entity.Variety;
 import com.shicepku.service.FarmproductionsCategoryService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -61,13 +62,13 @@ public class FarmproductionsCategoryControl {
     }
     @RequestMapping(value = "/getScheduling",method = RequestMethod.POST)
     @ResponseBody
-    public List<Scheduling> getScheduling(Model model, String category){
+    public List<Variety> getScheduling(Model model, String category){
 //        List<Scheduling> schedulingList=fcService.farmproductionsCategorySelectVariety(category);
 //        model.addAttribute("schedulingList",schedulingList);
 //        return "/category/farmschedulingcategory::scheduling_list";
-        List<Scheduling> schedulingList=fcService.farmproductionsCategorySelectVariety(category);
-        model.addAttribute("categorylist", schedulingList);
+        List<Variety> varietyList=fcService.farmproductionsCategorySelectVariety(category);
+        model.addAttribute("categorylist", varietyList);
        // return "/category/farmschedulingcategory::categorylist";
-        return schedulingList;
+        return varietyList;
     }
 }

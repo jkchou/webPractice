@@ -5,10 +5,13 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.shicepku.entity.FarmproductionsCategory;
+import com.shicepku.entity.Variety;
+import com.shicepku.mapper.VarietyMapper;
 import com.shicepku.service.FarmproductionsCategoryService;
 import com.shicepku.service.SchedulingService;
 import com.shicepku.entity.Scheduling;
 import com.shicepku.mapper.SchedulingMapper;
+import com.shicepku.service.VarietyService;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +19,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.sql.Date;
 import java.util.List;
 
 @Slf4j
@@ -117,6 +121,27 @@ void insertCategory(){
     @Test
     void selectById() {
         log.debug("{}", schedulingMapper.selectById(1));
+    }
+
+
+    @Autowired
+    VarietyService varietyService;
+
+    @Test
+    void testVariety(){
+        Variety variety = new Variety();
+        variety.setId(6);
+        variety.setName("hh");
+        variety.setCategory("我是zxh");
+        variety.setPlot(1);
+        variety.setYlut(10.0);
+        variety.setGrowthCycle(6);
+        Date date = new Date(System.currentTimeMillis());
+        log.debug("date ---> {}",date);
+        variety.setPlantingIn(date);
+        variety.setMatureIn(date);
+        int i = varietyService.updateById(variety);
+        System.out.println(i);
     }
 
 }

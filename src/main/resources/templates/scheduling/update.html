@@ -106,7 +106,7 @@
                         </a>
                         <div id="collapseOne1" class="panel-collapse collapse">
                             <ul class="nav  nav-list">
-                                <li><a href="../category/farmschedulingcategory.html">种 类</a></li>
+                                <li><a href="/FarmSchedulingCategory/selectAll#">种 类</a></li>
                                 <li><a href="scheduling.html">排 产</a></li>
                             </ul>
                         </div>
@@ -226,7 +226,8 @@
                             </div>
                             <p class="col-xs-1 col-xs-offset-1 control-label">种植品种</p>
                             <div class="col-xs-3">
-                                <input type="text" class="form-control" value="" id="variety"/>
+                                <select class="form-control" id="variety">
+                                </select>
                             </div>
                         </div>
                     </fieldset>
@@ -337,6 +338,18 @@
                         str += "<option>" + category[i] + "</option>";
                     }
                     $("#category").html(str);
+                }
+            });
+        axios.post('/api/scheduling/getVariety')
+            .then(respond => {
+                if (respond.status === 200) {
+                    console.log(respond.data)
+                    variety = respond.data;
+                    var str = "";
+                    for (let i in variety) {
+                        str += "<option>"+variety[i]+"</option>";
+                    }
+                    $("#variety").html(str);
                 }
             });
     }
