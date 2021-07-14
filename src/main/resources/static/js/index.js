@@ -12,12 +12,29 @@ $(function () {   //鼠标点击左侧nav 更换背景图片
     }).mouseout(function () {
         $(this).removeClass('nav-panel-list');
     });
-    //点击删除农机
+    //点击删除第二类产品
     $(".delete-nj").click(function () {
+        var variety_name=$(this).parent().parent().children(".mingcheng").children("h4").text();
+        console.log(variety_name);
         var conf = confirm('确定删除吗？');
         if (conf) {
             $(this).parent().parent().addClass('brick').one('webkitAnimationEnd oanimationend msAnimationEnd animationend', function (e) {
                 $(this).remove();
+                $.ajax({
+                    async:false,
+                    url:"/FarmSchedulingCategory/deleteVariety",
+                    method:"post",
+                    data:{
+                        varietyName:variety_name,
+                    },
+                    success(){
+                        console.log(variety_name)
+                        window.location.reload();
+                    },
+                    error(err){
+                      console.log(err);
+                    }
+                })
             });
         }
     });
@@ -41,17 +58,28 @@ $(function () {   //鼠标点击左侧nav 更换背景图片
         }
     });
     //点击删除种类
-    //删除二级列表
-    //传入二级列表id，返回刷新
-    $(".delete-zhonglei").click(function (category_name) {
-        // console.log(category_name);
-        console.log($(this).parent().parent().parent().children[1].text());
-        console.log($(this).parent().parent().parent().children[0].text());
+    //删除一级列表
+    //传入一级列表id，返回刷新
+    $(".delete-zhonglei").click(function () {
+        var category_name=$(this).parent().parent().parent().children().children("h3").text();
         var conf = confirm('确定删除吗？');
         if (conf) {
             $(this).parent().parent().parent().parent().addClass('brick').one('webkitAnimationEnd oanimationend msAnimationEnd animationend', function (e) {
                 $(this).remove();
-
+                $.ajax({
+                    async: false,
+                    url: "/FarmSchedulingCategory/deleteCategory",
+                    method: "post",
+                    data:{
+                        categoryName:category_name,
+                    },
+                    success(data){
+                        console.log(category_name);
+                    },
+                    error(err){
+                        console.log(err);
+                    }
+                })
             });
         }
     });
@@ -156,7 +184,33 @@ function changezhonglei(id, category_id,divId) {
                     "                                            <h4>添加品种</h4>\n" +
                     "                                        </div>\n" +
                     "                                    </div>\n" +
-                    "                                </div>"
+                    "                                </div>" +
+                    "<script>" +
+                    "$(\".delete-nj\").click(function () {\n" +
+                    "        var variety_name=$(this).parent().parent().children(\".mingcheng\").children(\"h4\").text();\n" +
+                    "        console.log(variety_name);\n" +
+                    "        var conf = confirm('确定删除吗？');\n" +
+                    "        if (conf) {\n" +
+                    "            $(this).parent().parent().addClass('brick').one('webkitAnimationEnd oanimationend msAnimationEnd animationend', function (e) {\n" +
+                    "                $(this).remove();\n" +
+                    "                $.ajax({\n" +
+                    "                    async:false,\n" +
+                    "                    url:\"/FarmSchedulingCategory/deleteVariety\",\n" +
+                    "                    method:\"post\",\n" +
+                    "                    data:{\n" +
+                    "                        varietyName:variety_name,\n" +
+                    "                    },\n" +
+                    "                    success(){\n" +
+                    "                        console.log(variety_name)\n" +
+                    "                    },\n" +
+                    "                    error(err){\n" +
+                    "                      console.log(err);  \n" +
+                    "                    }\n" +
+                    "                })\n" +
+                    "            });\n" +
+                    "        }\n" +
+                    "    });</script>"
+
                 $(`#${divId}`).html(data);
                 setTimeout(function (){
                     console.log(2);

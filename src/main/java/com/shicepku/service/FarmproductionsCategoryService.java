@@ -19,7 +19,14 @@ public class FarmproductionsCategoryService {
     @Autowired
     private FarmproductionsCategoryMapper ffcMapper;
     public List<FarmproductionsCategory> FarmproductionsCategorySelectAll(){
-        return ffcMapper.selectList(null);
+        QueryWrapper<FarmproductionsCategory> wrapper = new QueryWrapper<>();
+        wrapper.eq("del_flag",1);
+        return ffcMapper.selectList(wrapper);
+    }
+    public List<FarmproductionsCategory> FarmproductionsCategorySearch(String categoryName){
+        QueryWrapper<FarmproductionsCategory>wrapper=new QueryWrapper<>();
+        wrapper.like("name",categoryName);
+        return ffcMapper.selectList(wrapper);
     }
     public  FarmproductionsCategory FarmproductionsCategorySelectById(int id){
         return ffcMapper.selectById(id);
@@ -36,12 +43,13 @@ public class FarmproductionsCategoryService {
     public List<Variety> farmproductionsCategorySelectVariety(String category){
         QueryWrapper<Variety> wrapper = new QueryWrapper<>();
         wrapper.eq("category",category);
+        wrapper.eq("del_flag",1);
         return varietyMapper.selectList(wrapper);
     }
 
     //删除Category
-    public int deleteByCategoryName(String name){
-        return ffcMapper.deleteByName(name);
+    public int deleteByCategoryName(String categoryName){
+        return ffcMapper.deleteByName(categoryName);
     }
 
     //删除Variety

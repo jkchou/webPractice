@@ -199,13 +199,13 @@
                     </div>
                 </div>
                 <div class="nongji-btn">
-                    <form class="bs-example bs-example-form" role="form">
+                    <form  class="bs-example bs-example-form" role="form" method="post" action="/FarmSchedulingCategory/searchCategory">
                         <div class="row">
                             <div class="col-xs-4">
                                 <div class="input-group">
-                                    <input type="text" class="form-control" placeholder="请输入搜索条件"/>
+                                    <input name="categoryName" id="categoryName" type="text" class="form-control" placeholder="请输入搜索条件"/>
                                     <span class="input-group-btn">
-                           <button class="btn btn-primary" type="button"><i
+                           <button class="btn btn-primary" type="submit"><i
                                    class="glyphicon glyphicon-search"></i></button>
                          </span>
                                 </div>
@@ -248,13 +248,12 @@
                                 <div class="col-xs-5 nongjiguanli_box"  th:fragment="category_list" th:each="scheduling,indexInc2:${categorylists}" th:id="erjiliebiao+(${indexInc2.index}+1)">
 <!--                                    删除标签-->
 <!--                                    deleteScheduling-->
-                                    <a href="#" ><span class="delete-nj glyphicon glyphicon-remove-sign"></span></a>
+                                    <a href="#"><span class="delete-nj glyphicon glyphicon-remove-sign"></span></a>
 <!--                                    修改标签-->
                                     <a href="#" data-toggle="modal" data-target=".zhonglei22" aria-hidden="true"
                                        type="button"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
                                     <img src="../../static/images/zhonglei_2_10.png">
                                     <div class="mingcheng">
-
                                         <h4 th:text="${scheduling.name}"></h4>
                                         <p class="intro">月产：300公斤&nbsp;&nbsp;季产：400公斤&nbsp;&nbsp; 年产：3000公斤</p>
                                     </div>

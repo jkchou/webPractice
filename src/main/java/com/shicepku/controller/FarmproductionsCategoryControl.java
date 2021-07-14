@@ -20,7 +20,6 @@ import java.util.List;
 public class FarmproductionsCategoryControl {
     @Autowired
     private FarmproductionsCategoryService fcService;
-    //类别 月产 季产 年产
     @RequestMapping("/updateCategory")
     public void update(@ModelAttribute FarmproductionsCategory farmproductionsCategory){
         System.out.println("进入update方法");
@@ -62,12 +61,30 @@ public class FarmproductionsCategoryControl {
     @RequestMapping(value = "/getScheduling",method = RequestMethod.POST)
 //    @ResponseBody
     public String getScheduling(Model model, String category){
-//        List<Scheduling> schedulingList=fcService.farmproductionsCategorySelectVariety(category);
-//        model.addAttribute("schedulingList",schedulingList);
-//        return "/category/farmschedulingcategory::scheduling_list";
         List<Variety> schedulingList=fcService.farmproductionsCategorySelectVariety(category);
         model.addAttribute("categorylists", schedulingList);
        return "/category/farmschedulingcategory::category_list";
 //        return schedulingList;
+    }
+    @RequestMapping(value = "/deleteVariety",method = RequestMethod.POST)
+    public String deleteVariety(String varietyName){
+//        System.out.println(varietyName);
+        int res= fcService.deleteByVarietyName(varietyName);
+        return "redirect:/FarmSchedulingCategory/selectAll";
+    }
+    @RequestMapping(value = "/deleteCategory",method = RequestMethod.POST)
+    public String deleteCategory(String categoryName){
+//        System.out.println(categoryName);
+        int res= fcService.deleteByCategoryName(categoryName);
+        System.out.println(res);
+        return "redirect:/FarmSchedulingCategory/selectAll";
+    }
+    @RequestMapping(value = "/searchCategory",method=RequestMethod.POST)
+    public void searchCategory(Model model,@RequestParam(value = "categoryName") String category_name) {
+//        List<FarmproductionsCategory> farmproductionsCategoryList=fcService.FarmproductionsCategorySearch(categoryName);
+        System.out.println(category_name);
+//        System.out.println(farmproductionsCategoryList.toString());
+//        model.addAttribute("List",farmproductionsCategoryList);
+//        return new ModelAndView("/category/farmschedulingcategory");
     }
 }
