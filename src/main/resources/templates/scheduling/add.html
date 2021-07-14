@@ -107,7 +107,7 @@
                         </a>
                         <div id="collapseOne1" class="panel-collapse collapse">
                             <ul class="nav  nav-list">
-                                <li><a href="计划-种类.html">种 类</a></li>
+                                <li><a href="../category/farmschedulingcategory.html">种 类</a></li>
                                 <li><a href="scheduling.html">排 产</a></li>
                             </ul>
                         </div>
@@ -202,15 +202,16 @@
                             <p class="col-xs-1 col-xs-offset-1 control-label">块地</p>
                             <div class="col-xs-3">
                                 <select class="form-control" id="plotId">
-                                    <option value="">请选择112</option>
                                     <option value="">地块1</option>
                                     <option value="">地块2</option>
+                                    <option value="">地块3</option>
+                                    <option value="">地块4</option>
+                                    <option value="">地块5</option>
                                 </select>
                             </div>
                             <p class="col-xs-1 col-xs-offset-1 control-label">区域</p>
                             <div class="col-xs-3">
                                 <select class="form-control" id="greenHouse">
-                                    <option value="">请选择</option>
                                     <option value="">21号大棚</option>
                                     <option value="">22号大棚</option>
                                     <option value="">23号大棚</option>
@@ -222,21 +223,14 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <p class="col-xs-1 col-xs-offset-1 control-label">种植品种</p>
-                            <div class="col-xs-3">
-                                <select class="form-control" id="variety">
-                                    <option value="">请选择</option>
-                                    <option value="">大豆</option>
-                                    <option value="">龙薯</option>
-                                </select>
-                            </div>
                             <p class="col-xs-1 col-xs-offset-1 control-label">种植种类</p>
                             <div class="col-xs-3">
                                 <select class="form-control" id="category">
-                                    <option value="">请选择</option>
-                                    <option value="">大豆类</option>
-                                    <option value="">薯类</option>
                                 </select>
+                            </div>
+                            <p class="col-xs-1 col-xs-offset-1 control-label">种植品种</p>
+                            <div class="col-xs-3">
+                                <input type="text" class="form-control" value="" id="variety"/>
                             </div>
                         </div>
                         <div class="form-group">
@@ -272,7 +266,7 @@
                 <div class="form-group nongjidetail-btn">
                     <div class="col-xs-offset-5">
                         <button class="btn btn-primary" onclick="newSche()">提交</button>
-                        <button class="btn btn-default" type="button">返回</button>
+                        <button class="btn btn-default" type="button" onclick="goBack()">返回</button>
                     </div>
                 </div>
             </div>
@@ -290,6 +284,9 @@
 <!--document.body.appendChild(s);-->
 <!--</script>-->
 <script>
+    function goBack() {
+        window.location.href = "scheduling.html";
+    }
     var scheduling = {
         delFlag: null,
         farmProductionsCategoryId: null,
@@ -308,6 +305,13 @@
         updateBy: null,
         updateDate: null,
     };
+    var category = [];
+
+    window.onload = function (){
+        getCategory()
+    }
+
+
 
     function insert() {
         axios.post('/api/scheduling/insert', scheduling)
@@ -320,7 +324,32 @@
             });
     }
 
+    function getCategory() {
+        axios.post('/api/scheduling/getCategory')
+            .then(respond => {
+                if (respond.status === 200) {
+                    console.log(respond.data)
+                    category = respond.data;
+                    var str = "";
+                    for (let i in category) {
+                        str += "<option>"+category[i]+"</option>";
+                    }
+                    $("#category").html(str);
+                }
+            });
+    }
+
+
+
     function newSche() {
+        var flag = 1;
+        function validate(value) {
+            var reg = /^[+]{0,1}(\d+)$|^[+]{0,1}(\d+\.\d+)$/;
+            if(!reg.test(value)){
+                alert(value+"格式不正确,请输入数字")
+                flag = 0;
+            }
+        }
         //地块
         var value = $("#plotId option:selected").text();
         scheduling.plotId = parseInt(value.replace(/[^\d]/g, ' '));
@@ -331,24 +360,27 @@
         value = $("#category option:selected").text();
         scheduling.farmProductionsCategoryId = value;
         //品种
-        value = $("#variety option:selected").text();
+        value = $("#variety").val();
         scheduling.farmProductionsVarietyId = value;
         //茬
         value = $("#name").val();
         scheduling.name = value;
         //预估产量
         value = $("#foreCast").val();
+        validate(value);
         scheduling.foreCast = parseInt(value);
         //实际产量
         value = $("#realCast").val();
+        validate(value);
         scheduling.realCast = parseInt(value);
         //种植面积
         value = $("#plantArea").val();
+        validate(value);
         scheduling.plantArea = parseInt(value);
 
-        setTimeout(function () {
-            insert();
-        }, 90);
+        if(flag === 1){
+            insert()
+        }
     }
 
 
