@@ -39,4 +39,11 @@ public class FarmproductionsCategoryService {
         return varietyMapper.selectList(wrapper);
     }
 
+    //删除Category
+    public int deleteByCategoryName(String name){
+        return 1;
+    }
+
+    //删除Variety
+
 }

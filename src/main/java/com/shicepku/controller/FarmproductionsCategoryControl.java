@@ -2,7 +2,7 @@ package com.shicepku.controller;
 
 import com.alibaba.fastjson.JSON;
 import com.shicepku.entity.FarmproductionsCategory;
-import com.shicepku.entity.Scheduling;
+import com.shicepku.entity.Variety;
 import com.shicepku.service.FarmproductionsCategoryService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -66,7 +66,7 @@ public class FarmproductionsCategoryControl {
 //        model.addAttribute("schedulingList",schedulingList);
 //        return "/category/farmschedulingcategory::scheduling_list";
         List<Variety> schedulingList=fcService.farmproductionsCategorySelectVariety(category);
-        model.addAttribute("categorylist", varietyList);
+        model.addAttribute("categorylists", schedulingList);
        return "/category/farmschedulingcategory::category_list";
 //        return schedulingList;
     }

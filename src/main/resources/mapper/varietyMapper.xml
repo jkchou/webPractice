@@ -6,4 +6,12 @@
         set del_flag=0
         where id = #{id}
     </delete>
+    <delete id="deleteByName" parameterType="String">
+        update  variety v ,scheduling s
+        set
+            v.del_flag = 0,
+            s.del_flag = 0
+        where v.name = #{name}
+          AND s.farm_productions_variety_id = #{name}
+    </delete>
 </mapper>
