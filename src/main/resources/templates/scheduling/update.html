@@ -230,6 +230,12 @@
                                 </select>
                             </div>
                         </div>
+                        <div class="form-group">
+                            <p class="col-xs-1 col-xs-offset-1 control-label">茬</p>
+                            <div class="col-xs-3">
+                                <input type="text" class="form-control" value="" id="name"/>
+                            </div>
+                        </div>
                     </fieldset>
                     <fieldset>
                         <legend>采收信息</legend>
@@ -376,10 +382,7 @@
             if (obj[i].text === scheduling.plotId)
                 obj[i].selected = true;
         }
-        // $("#variety option:selected").text(scheduling.farmProductionsVarietyId);
-        // $("#category option:selected").text(scheduling.farmProductionsCategoryId);
-        // $("#greenHouse option:selected").text(scheduling.greenHouseId + "号大棚");
-        // $("#plotId option:selected").text("地块" + scheduling.plotId);
+        $("#name").val(scheduling.name);
         $("#foreCast").val(scheduling.foreCast);
         $("#realCast").val(scheduling.realCast);
         $("#plantArea").val(scheduling.plantArea);

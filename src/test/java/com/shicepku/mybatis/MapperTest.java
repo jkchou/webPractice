@@ -42,11 +42,6 @@ public class MapperTest {
         wrapper.eq("delFlag", 1);
         Page<Scheduling> page = new Page<>(1, 5);
         IPage<Scheduling> schedulingIPage = schedulingService.selectPageVo(page, wrapper);
-      /*  List<Scheduling> schedulingList = schedulingIPage.getRecords();
-        for (int i = 0; i < schedulingList.size(); i++) {
-            Scheduling scheduling =  schedulingList.get(i);
-            System.out.println(scheduling);
-        }*/
         log.debug("total -> {}", schedulingIPage.getTotal());
         log.debug("pages -> {}", schedulingIPage.getPages());
         log.debug("current -> {}", schedulingIPage.getCurrent());
