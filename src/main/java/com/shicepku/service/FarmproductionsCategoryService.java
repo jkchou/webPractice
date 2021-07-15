@@ -57,4 +57,10 @@ public class FarmproductionsCategoryService {
     public  int deleteByVarietyName(String name){
         return varietyMapper.deleteByName(name);
     }
+
+    public int updateByName(FarmproductionsCategory category){
+        QueryWrapper<FarmproductionsCategory> wrapper = new QueryWrapper<>();
+        wrapper.eq("name",category.getName());
+        return ffcMapper.update(category,wrapper);
+    }
 }

@@ -149,8 +149,12 @@ void insertCategory(){
     @Test
     void testdelete(){
         //farmproductionsCategoryService.deleteByCategoryName("大豆类");
-        farmproductionsCategoryService.deleteByVarietyName("大豆");
-
+        Variety variety = new Variety();
+        variety.setName("admin");
+        variety.setYlut(12.123);
+        variety.setPlot(222);
+        variety.setGrowthCycle(12);
+        varietyService.updateByName(variety);
     }
 
 }

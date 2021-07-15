@@ -1,5 +1,6 @@
 package com.shicepku.service;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.shicepku.entity.Variety;
 import com.shicepku.mapper.VarietyMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,5 +29,9 @@ public class VarietyService {
         return varietyMapper.deleteById(id);
     }
 
-
+    public int updateByName(Variety variety){
+        QueryWrapper<Variety> wrapper = new QueryWrapper<>();
+        wrapper.eq("name",variety.getName());
+        return varietyMapper.update(variety,wrapper);
+    }
 }
