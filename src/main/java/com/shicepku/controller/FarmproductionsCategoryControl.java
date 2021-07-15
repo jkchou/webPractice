@@ -115,7 +115,8 @@ public class FarmproductionsCategoryControl {
         category.setYlut(ylut);
         category.setName(name);
         category.setPicture(imgPath);
-
+        category.setDelFlag(1);
+        fcService.updateByName(category);
         System.out.println(date);
         System.out.println(edescribe);
         System.out.println(ylut);

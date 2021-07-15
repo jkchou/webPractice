@@ -339,8 +339,11 @@ var imagePath ;
 var baseUrl = "http://127.0.0.1:8888/static/";
 
 function uploadImage(imgId) {
+    console.log(imgId);
+    var imgSrc = $(`#${imgId}`).parent().prev().children().children().attr('id');
+    console.log(imgSrc);
     var formData = new FormData();
-    let file = document.getElementById('saveImage').files[0];
+    let file = document.getElementById(`${imgId}`).files[0];
     formData.append("file",file);
     $.ajax({
         async:false,
@@ -354,7 +357,7 @@ function uploadImage(imgId) {
             console.log(data)
             imagePath = data;
             var src = baseUrl + imagePath
-            $(`#${imgId}`).attr("src",src);
+            $(`#${imgSrc}`).attr("src",src);
         },
         error(err){
             console.log(err)
@@ -383,7 +386,7 @@ function updatezhonglei(e){
             imgPath: imagePath,
         },
         success(data){
-
+            window.location.reload();
         },
         error(err){
             console.log(err)
