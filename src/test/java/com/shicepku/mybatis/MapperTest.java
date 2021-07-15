@@ -157,4 +157,19 @@ void insertCategory(){
         varietyService.updateByName(variety);
     }
 
+
+    @Autowired
+    VarietyService vrService;
+    @Test
+    void testinsert(){
+        Variety vr=new Variety();
+        vr.setCategory("大豆类");
+        vr.setName("我是大豆");
+        vr.setGrowthCycle(100);
+        vr.setYlut(20.0);
+//         VarietyService vrService = null;
+         int res=vrService.insert(vr);
+        System.out.println(res);
+    }
+
 }
