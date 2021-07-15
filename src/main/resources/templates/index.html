@@ -13,9 +13,11 @@
     <img id="image" src="">
 </div>
 <script>
-    function upload(e) {
+    function upload() {
         let file = document.getElementById('saveImage').files[0];
         var formData = new FormData;
+        console.log(typeof file);
+        console.log(file);
         formData.append("file", file);
         axios.post('/api/scheduling/image',formData,{
             headers: {"Content-Type": "multipart/form-data"}

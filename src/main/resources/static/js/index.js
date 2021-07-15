@@ -28,7 +28,7 @@ $(function () {   //鼠标点击左侧nav 更换背景图片
                         varietyName:variety_name,
                     },
                     success(){
-                        console.log(variety_name)
+                        // console.log(variety_name)
                         window.location.reload();
                     },
                     error(err){
@@ -155,6 +155,24 @@ function changeFeedback(id) {
 }
 
 //伸缩二级菜单 资源-设备管理
+
+function getCurrentScheduling(e){
+
+    var currentName1=$(e).next().next().children("h4").text()
+    var currentYlut=$(e).next().next().children("h3").text()
+    var currentPlot=$(e).next().next().children("h2").text()
+    var currentGrowthCycle=$(e).next().next().children("h1").text()
+    $("#leibie1").val(currentName1);
+    $("#muchan1").val(currentYlut);
+    $("#dikuai1").val(currentPlot);
+    $("#zhouqi1").val(currentGrowthCycle);
+    // console.log(currentName1);
+    // console.log(currentYlut);
+    // console.log(currentPlot);
+    // console.log(currentGrowthCycle);
+    // $("#leibie1").val(currentName);
+}
+
 function changezhonglei(id, category_id,divId) {
     var str = document.getElementById(id).className;
     var tag = str.substring(20, str.length);
@@ -314,4 +332,67 @@ function gradeChange() {
     var objS8 = document.getElementsByClassName("xiugai_zhi")[8];
     var grade8 = objS8.options[objS8.selectedIndex].grade;
     alert("确定修改么?");
+}
+
+
+var imagePath ;
+var baseUrl = "http://127.0.0.1:8888/static/";
+
+function uploadImage(imgId) {
+    var formData = new FormData();
+    let file = document.getElementById('saveImage').files[0];
+    formData.append("file",file);
+    $.ajax({
+        async:false,
+        method:"post",
+        url:"/api/scheduling/image",
+        cache: false,
+        contentType: false,
+        processData: false,
+        data:formData,
+        success(data){
+            console.log(data)
+            imagePath = data;
+            var src = baseUrl + imagePath
+            $(`#${imgId}`).attr("src",src);
+        },
+        error(err){
+            console.log(err)
+        }
+    })
+}
+
+function updatezhonglei(e){
+     var createDate=$(e).parent().prev().children("#createDate").val();
+     var miaoshu=$(e).parent().prev().prev().children("#miaoshu").val();
+     var ylut=$(e).parent().prev().prev().prev().children("#muchan2").val();
+     var name=$(e).parent().prev().prev().prev().prev().children("#leibie").val();
+    //formData.append('picture', $(e).parent().prev().prev().prev().prev().prev().children('#picture').files[0]);
+    // let file = document.getElementById('picture').files[0];
+/*    console.log(typeof formData);
+    console.log(formData);*/
+    $.ajax({
+        async:false,
+        method:"post",
+        url:"/FarmSchedulingCategory/updateCategory",
+        data:{
+            createDate:createDate,
+            edescribe:miaoshu,
+            ylut:ylut,
+            name:name,
+            imgPath: imagePath,
+        },
+        success(data){
+
+        },
+        error(err){
+            console.log(err)
+        }
+    })
+
+
+    // console.log(createDate);
+    // console.log(miaoshu);
+    // console.log(ylut);
+    // console.log(name);
 }

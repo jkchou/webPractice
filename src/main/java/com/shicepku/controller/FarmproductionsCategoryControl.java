@@ -4,13 +4,18 @@ import com.shicepku.entity.FarmproductionsCategory;
 import com.shicepku.entity.Variety;
 import com.shicepku.service.FarmproductionsCategoryService;
 import com.shicepku.service.VarietyService;
+import com.shicepku.utils.ImageUpload;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.sql.Date;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 
@@ -20,18 +25,12 @@ import java.util.List;
 public class FarmproductionsCategoryControl {
     @Autowired
     private FarmproductionsCategoryService fcService;
+    @Autowired
     private VarietyService vrService;
     @RequestMapping("/insertVariety")
     public String insert(@ModelAttribute Variety Variety){
         System.out.println("进入insert方法");
-                System.out.println(Variety.toString());
         int res=vrService.insert(Variety);
-//        System.out.println(Variety.getName());
-//        System.out.println(Variety.getGrowthCycle());
-//        System.out.println(Variety.getYlut());
-//        System.out.println(Variety.getMatureIn());
-//        System.out.println(Variety.getRemarks());
-//        System.out.println(Variety.getCategory());
         return "redirect:/FarmSchedulingCategory/selectAll";
     }
     @RequestMapping("/delectById")
@@ -44,6 +43,7 @@ public class FarmproductionsCategoryControl {
         List<FarmproductionsCategory> farmproductionsCategoryList=fcService.FarmproductionsCategorySelectAll();
         model.addAttribute("List",farmproductionsCategoryList);
         model.addAttribute("Variety",new Variety());
+        model.addAttribute("FarmproductionsCategory",new FarmproductionsCategory());
         return new ModelAndView("/category/farmschedulingcategory");
     }
     @RequestMapping("/selectById")
@@ -96,4 +96,44 @@ public class FarmproductionsCategoryControl {
         return new ModelAndView("/category/farmschedulingcategory");
 //        return new ModelAndView("/category/farmschedulingcategory");
     }
+    /*@RequestMapping("/updateCategory")
+    public  String updateCategory(@ModelAttribute FarmproductionsCategory farmproductionsCategory){
+        System.out.println(farmproductionsCategory.getYlut());
+        System.out.println(farmproductionsCategory.getName());
+        return "redirect:/FarmSchedulingCategory/selectAll";
+    }*/
+
+    @Autowired
+    ImageUpload imageUpload;
+
+    @RequestMapping(value = "/updateCategory",method = RequestMethod.POST)
+    public String updateVariety(String createDate, String edescribe, Double ylut, String name, String imgPath){
+        FarmproductionsCategory category = new FarmproductionsCategory();
+        Timestamp date = Timestamp.valueOf(createDate);
+        category.setCreateDate(date);
+        category.setEdescribe(edescribe);
+        category.setYlut(ylut);
+        category.setName(name);
+        category.setPicture(imgPath);
+
+        System.out.println(date);
+        System.out.println(edescribe);
+        System.out.println(ylut);
+        System.out.println(name);
+        System.out.println(imgPath);
+        return "redirect:/FarmSchedulingCategory/selectAll";
+    }
+
+   /* public static java.sql.Date strToDate(String strDate) {
+        String str = strDate;
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-mm-dd hh-mm-ss");
+        java.util.Date d = null;
+        try {
+            d = format.parse(str);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        java.sql.Date date = new java.sql.Date(d.getTime());
+        return date;
+    }*/
 }
